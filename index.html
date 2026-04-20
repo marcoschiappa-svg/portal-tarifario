@@ -727,10 +727,10 @@ async function cargarDatosFirestore(){
       DOC_MODS.get(), DOC_PENDIENTES.get(), DOC_HISTORIAL.get(),
       DOC_CATAC.get(), DOC_CONFIG.get()
     ]);
-    // Combinar mods simples y rutas nuevas en _cache.mods
-    const modsSimples = (mDoc.exists && mDoc.data().data) ? mDoc.data().data : {};
-    const rutasNuevas = (mDoc.exists && mDoc.data().rutas_nuevas) ? mDoc.data().rutas_nuevas : {};
-    _cache.mods = {...modsSimples, ...rutasNuevas};
+    // Leer mods — pueden ser simples (número) o rutas nuevas (objeto)
+    const todosLosMods = (mDoc.exists && mDoc.data().data) ? mDoc.data().data : {};
+    const rutasNuevas  = (mDoc.exists && mDoc.data().rutas_nuevas) ? mDoc.data().rutas_nuevas : {};
+    _cache.mods = {...todosLosMods, ...rutasNuevas};
     _cache.pendientes = (pDoc.exists  && pDoc.data().data)  ? pDoc.data().data  : [];
     _cache.historial  = (hDoc.exists  && hDoc.data().data)  ? hDoc.data().data  : [];
     _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
@@ -739,11 +739,13 @@ async function cargarDatosFirestore(){
 
     // Restaurar rutas nuevas (guardadas con clave "new_...") al array T
     Object.keys(_cache.mods).forEach(key => {
-      if(key.startsWith('new_') && _cache.mods[key] && typeof _cache.mods[key] === 'object'){
+      if(String(key).startsWith('new_') && _cache.mods[key] && typeof _cache.mods[key] === 'object'){
         const ruta = _cache.mods[key];
-        // Solo agregar si no existe ya en T
         const existe = T.findIndex(t=>t.destino===ruta.destino&&t.proveedor===ruta.proveedor);
-        if(existe < 0) T.push(ruta);
+        if(existe < 0){
+          T.push(ruta);
+          console.log('Ruta nueva restaurada:', ruta.proveedor, ruta.destino);
+        }
       }
     });
 
@@ -900,7 +902,15 @@ const sp=document.getElementById('fp');
 });
 
 function getAllRows(){
-  return T.map((t,i)=>({...t, tarifa_vigente: getTarifaVigente(i), modificada: getMods()[i]!==undefined}));
+  return T.map((t,i)=>{
+    const mods = getMods();
+    // Para rutas nuevas (esNueva=true), la tarifa ya está en t.tarifa_vigente
+    // Para rutas existentes, verificar si hay override numérico
+    let tv = t.tarifa_vigente;
+    if(mods[i] !== undefined && typeof mods[i] !== 'object') tv = mods[i];
+    const modificada = mods[i] !== undefined || t.esNueva === true;
+    return {...t, tarifa_vigente: tv, modificada};
+  });
 }
 function getFilt(){
   const q=document.getElementById('q').value.toLowerCase();
