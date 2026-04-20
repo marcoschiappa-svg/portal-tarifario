@@ -683,7 +683,10 @@ fbAuth.onAuthStateChanged(user => {
 // ── DATOS BASE ────────────────────────────────────────────
 // tarifa_base = Mar 2026 (punto cero)
 // tarifa_vigente = base × 1.0926 (+9.26% CATAMP Feb+Mar 2026)
-const T=[{"proveedor":"Bioils Argentina S.A.","producto":"Aceite","destino":"COFCO Pto.Gral.San Martin (SF)","km":29,"tarifa_base":8408,"tarifa_vigente":9187,"catac":13721.38,"categoria":"General"},{"proveedor":"Frigorifico Soychu SAICFIA","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Molinos Agro S.A. - San Lorenzo","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Union Agricola Avellaneda COOP LTDA","producto":"Aceite","destino":"Vicentin - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"BLD Agro S.A.","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Asoc. Coop. Argentinas COOP LTDA","producto":"Aceite","destino":"Vicentin - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Asoc. Coop. Argentinas COOP LTDA","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Viterra Argentina S. A.","producto":"Aceite","destino":"Renova - Timbues (SF)","km":20,"tarifa_base":9133,"tarifa_vigente":9979,"catac":11584.79,"categoria":"General"},{"proveedor":"LDC Argentina S.A.","producto":"Aceite","destino":"LDC - Timbues (SF)","km":20,"tarifa_base":9133,"tarifa_vigente":9979,"catac":11584.79,"categoria":"General"},{"proveedor":"LDC Argentina S.A.","producto":"Aceite","destino":"General Lagos","km":71,"tarifa_base":15783,"tarifa_vigente":17245,"catac":20683.74,"categoria":"General"},{"proveedor":"Cargill SACEI","producto":"Aceite","destino":"Cargill Villa Gob. Galvez (SF)","km":62,"tarifa_base":14405,"tarifa_vigente":15739,"catac":19248.19,"categoria":"General"},{"proveedor":"Agricultores Federados Arg. SCL","producto":"Aceite","destino":"AFA Los Cardos (SF)","km":138,"tarifa_base":23890,"tarifa_vigente":26102,"catac":30909.56,"categoria":"General"},{"proveedor":"ECOPOR","producto":"EMAG","destino":"Bella Vista","km":320,"tarifa_base":43629,"tarifa_vigente":47669,"catac":57316.7,"categoria":"General"},{"proveedor":"Laruso","producto":"Oleina","destino":"Canada Rosquin","km":120,"tarifa_base":21747,"tarifa_vigente":23761,"catac":28590.2,"categoria":"General"},{"proveedor":"Alianza Nutrientes S.A","producto":"Glicerina","destino":"Lima (BS)","km":242,"tarifa_base":35012,"tarifa_vigente":38254,"catac":45682.69,"categoria":"General"},{"proveedor":"Glycopharma","producto":"Glicerina Tecnica","destino":"Nogoya","km":129,"tarifa_base":22506,"tarifa_vigente":24590,"catac":29752.42,"categoria":"General"},{"proveedor":"Solamb S.R.L","producto":"RINP / HFFA","destino":"Timbues (SF)","km":18,"tarifa_base":7578,"tarifa_vigente":8280,"catac":11075.2,"categoria":"Peligroso"},{"proveedor":"Alltec SA","producto":"EMAG","destino":"Puerto Tirol (CH)","km":700,"tarifa_base":75952,"tarifa_vigente":82985,"catac":87165.04,"categoria":"Peligroso"},{"proveedor":"Formulagro","producto":"EMAG","destino":"San Lorenzo (SF)","km":5,"tarifa_base":17146,"tarifa_vigente":18734,"catac":9233.51,"categoria":"Peligroso"},{"proveedor":"Lab. San Pablo Prod. Biologicos","producto":"EMAG","destino":"Tucuman (TUC)","km":950,"tarifa_base":95880,"tarifa_vigente":104758,"catac":101289.99,"categoria":"Peligroso"},{"proveedor":"Ararami","producto":"EMAG","destino":"Figuiera (SF)","km":80,"tarifa_base":23449,"tarifa_vigente":25620,"catac":22229.54,"categoria":"Peligroso"},{"proveedor":"Daruma Agro SRL","producto":"EMAG","destino":"Lobos (BS)","km":354,"tarifa_base":41650,"tarifa_vigente":45507,"catac":61643.8,"categoria":"Peligroso"},{"proveedor":"El Tobiano","producto":"EMAG","destino":"Tortuguitas","km":308,"tarifa_base":36593,"tarifa_vigente":39982,"catac":55808.97,"categoria":"Peligroso"},{"proveedor":"Induagro","producto":"EMAG","destino":"Canada de Gomez","km":85,"tarifa_base":23449,"tarifa_vigente":25620,"catac":23139.04,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Sigma - Brandsen (BS)","km":427,"tarifa_base":47699,"tarifa_vigente":52116,"catac":70094.46,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Termochemical - Ezeiza (BA)","km":365,"tarifa_base":43965,"tarifa_vigente":48036,"catac":63053.38,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Stoller - (Cba)","km":420,"tarifa_base":49470,"tarifa_vigente":54051,"catac":69448.08,"categoria":"Peligroso"},{"proveedor":"Whor Quimica S.R.L","producto":"EMAG","destino":"Esperanza (SF)","km":175,"tarifa_base":27418,"tarifa_vigente":29957,"catac":36047.69,"categoria":"Peligroso"},{"proveedor":"Daruma Agro SRL","producto":"EMAG","destino":"Arrecifes (BA)","km":190,"tarifa_base":29715,"tarifa_vigente":32467,"catac":38209.43,"categoria":"Peligroso"},{"proveedor":"Serv Quim S.A.","producto":"EMAG","destino":"Las Varillas (Cba)","km":245,"tarifa_base":33150,"tarifa_vigente":36220,"catac":46140.74,"categoria":"Peligroso"},{"proveedor":"AKTIV S.R.L","producto":"EMAG","destino":"Rio Primero (Cba)","km":370,"tarifa_base":45900,"tarifa_vigente":50150,"catac":63718.56,"categoria":"Peligroso"},{"proveedor":"Molisoles S.A","producto":"EMAG","destino":"America (BA)","km":440,"tarifa_base":47699,"tarifa_vigente":52116,"catac":71297.01,"categoria":"Peligroso"},{"proveedor":"PAE","producto":"Biodiesel","destino":"Campana (BA)","km":280,"tarifa_base":32161,"tarifa_vigente":35139,"catac":51549.09,"categoria":"Peligroso"},{"proveedor":"AGM","producto":"EMAG","destino":"Pilar (BA)","km":334,"tarifa_base":36593,"tarifa_vigente":39982,"catac":59063.36,"categoria":"Peligroso"},{"proveedor":"Rainbow","producto":"EMAG","destino":"Gualeguaychu (ER)","km":260,"tarifa_base":32311,"tarifa_vigente":35303,"catac":48413.09,"categoria":"Peligroso"},{"proveedor":"Exolgan","producto":"Biodiesel","destino":"Dock Sur","km":340,"tarifa_base":40898,"tarifa_vigente":44685,"catac":59845.78,"categoria":"Peligroso"},{"proveedor":"Andreani Logistica SA","producto":"Biodiesel","destino":"Tigre (BA)","km":291,"tarifa_base":39467,"tarifa_vigente":43122,"catac":53305.51,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Sigma - Gral. Rodriguez (BA)","km":316,"tarifa_base":39467,"tarifa_vigente":43122,"catac":56810.47,"categoria":"Peligroso"},{"proveedor":"Laboratorio Peyte S.A.","producto":"EMAG","destino":"Venado Tuerto (SF)","km":210,"tarifa_base":30396,"tarifa_vigente":33211,"catac":41058.27,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TSL","producto":"Biodiesel","destino":"Terminal San Lorenzo (SF)","km":14,"tarifa_base":17146,"tarifa_vigente":18734,"catac":11049.19,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TPG","producto":"Biodiesel","destino":"Terminal Galvan (BA)","km":800,"tarifa_base":118392,"tarifa_vigente":129355,"catac":93893.18,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TC","producto":"Biodiesel","destino":"Terminal Campana (BA)","km":261,"tarifa_base":34072,"tarifa_vigente":37227,"catac":48548.47,"categoria":"Peligroso"}];
+// T se carga desde Firestore en initPortal()
+// Las 42 rutas base están en portal/rutas con {base: [...], nuevas: [...]}
+let T = [];
+const T_BASE = [{"proveedor":"Bioils Argentina S.A.","producto":"Aceite","destino":"COFCO Pto.Gral.San Martin (SF)","km":29,"tarifa_base":8408,"tarifa_vigente":9187,"catac":13721.38,"categoria":"General"},{"proveedor":"Frigorifico Soychu SAICFIA","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Molinos Agro S.A. - San Lorenzo","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Union Agricola Avellaneda COOP LTDA","producto":"Aceite","destino":"Vicentin - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"BLD Agro S.A.","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Asoc. Coop. Argentinas COOP LTDA","producto":"Aceite","destino":"Vicentin - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Asoc. Coop. Argentinas COOP LTDA","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Viterra Argentina S. A.","producto":"Aceite","destino":"Renova - Timbues (SF)","km":20,"tarifa_base":9133,"tarifa_vigente":9979,"catac":11584.79,"categoria":"General"},{"proveedor":"LDC Argentina S.A.","producto":"Aceite","destino":"LDC - Timbues (SF)","km":20,"tarifa_base":9133,"tarifa_vigente":9979,"catac":11584.79,"categoria":"General"},{"proveedor":"LDC Argentina S.A.","producto":"Aceite","destino":"General Lagos","km":71,"tarifa_base":15783,"tarifa_vigente":17245,"catac":20683.74,"categoria":"General"},{"proveedor":"Cargill SACEI","producto":"Aceite","destino":"Cargill Villa Gob. Galvez (SF)","km":62,"tarifa_base":14405,"tarifa_vigente":15739,"catac":19248.19,"categoria":"General"},{"proveedor":"Agricultores Federados Arg. SCL","producto":"Aceite","destino":"AFA Los Cardos (SF)","km":138,"tarifa_base":23890,"tarifa_vigente":26102,"catac":30909.56,"categoria":"General"},{"proveedor":"ECOPOR","producto":"EMAG","destino":"Bella Vista","km":320,"tarifa_base":43629,"tarifa_vigente":47669,"catac":57316.7,"categoria":"General"},{"proveedor":"Laruso","producto":"Oleina","destino":"Canada Rosquin","km":120,"tarifa_base":21747,"tarifa_vigente":23761,"catac":28590.2,"categoria":"General"},{"proveedor":"Alianza Nutrientes S.A","producto":"Glicerina","destino":"Lima (BS)","km":242,"tarifa_base":35012,"tarifa_vigente":38254,"catac":45682.69,"categoria":"General"},{"proveedor":"Glycopharma","producto":"Glicerina Tecnica","destino":"Nogoya","km":129,"tarifa_base":22506,"tarifa_vigente":24590,"catac":29752.42,"categoria":"General"},{"proveedor":"Solamb S.R.L","producto":"RINP / HFFA","destino":"Timbues (SF)","km":18,"tarifa_base":7578,"tarifa_vigente":8280,"catac":11075.2,"categoria":"Peligroso"},{"proveedor":"Alltec SA","producto":"EMAG","destino":"Puerto Tirol (CH)","km":700,"tarifa_base":75952,"tarifa_vigente":82985,"catac":87165.04,"categoria":"Peligroso"},{"proveedor":"Formulagro","producto":"EMAG","destino":"San Lorenzo (SF)","km":5,"tarifa_base":17146,"tarifa_vigente":18734,"catac":9233.51,"categoria":"Peligroso"},{"proveedor":"Lab. San Pablo Prod. Biologicos","producto":"EMAG","destino":"Tucuman (TUC)","km":950,"tarifa_base":95880,"tarifa_vigente":104758,"catac":101289.99,"categoria":"Peligroso"},{"proveedor":"Ararami","producto":"EMAG","destino":"Figuiera (SF)","km":80,"tarifa_base":23449,"tarifa_vigente":25620,"catac":22229.54,"categoria":"Peligroso"},{"proveedor":"Daruma Agro SRL","producto":"EMAG","destino":"Lobos (BS)","km":354,"tarifa_base":41650,"tarifa_vigente":45507,"catac":61643.8,"categoria":"Peligroso"},{"proveedor":"El Tobiano","producto":"EMAG","destino":"Tortuguitas","km":308,"tarifa_base":36593,"tarifa_vigente":39982,"catac":55808.97,"categoria":"Peligroso"},{"proveedor":"Induagro","producto":"EMAG","destino":"Canada de Gomez","km":85,"tarifa_base":23449,"tarifa_vigente":25620,"catac":23139.04,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Sigma - Brandsen (BS)","km":427,"tarifa_base":47699,"tarifa_vigente":52116,"catac":70094.46,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Termochemical - Ezeiza (BA)","km":365,"tarifa_base":43965,"tarifa_vigente":48036,"catac":63053.38,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Stoller - (Cba)","km":420,"tarifa_base":49470,"tarifa_vigente":54051,"catac":69448.08,"categoria":"Peligroso"},{"proveedor":"Whor Quimica S.R.L","producto":"EMAG","destino":"Esperanza (SF)","km":175,"tarifa_base":27418,"tarifa_vigente":29957,"catac":36047.69,"categoria":"Peligroso"},{"proveedor":"Daruma Agro SRL","producto":"EMAG","destino":"Arrecifes (BA)","km":190,"tarifa_base":29715,"tarifa_vigente":32467,"catac":38209.43,"categoria":"Peligroso"},{"proveedor":"Serv Quim S.A.","producto":"EMAG","destino":"Las Varillas (Cba)","km":245,"tarifa_base":33150,"tarifa_vigente":36220,"catac":46140.74,"categoria":"Peligroso"},{"proveedor":"AKTIV S.R.L","producto":"EMAG","destino":"Rio Primero (Cba)","km":370,"tarifa_base":45900,"tarifa_vigente":50150,"catac":63718.56,"categoria":"Peligroso"},{"proveedor":"Molisoles S.A","producto":"EMAG","destino":"America (BA)","km":440,"tarifa_base":47699,"tarifa_vigente":52116,"catac":71297.01,"categoria":"Peligroso"},{"proveedor":"PAE","producto":"Biodiesel","destino":"Campana (BA)","km":280,"tarifa_base":32161,"tarifa_vigente":35139,"catac":51549.09,"categoria":"Peligroso"},{"proveedor":"AGM","producto":"EMAG","destino":"Pilar (BA)","km":334,"tarifa_base":36593,"tarifa_vigente":39982,"catac":59063.36,"categoria":"Peligroso"},{"proveedor":"Rainbow","producto":"EMAG","destino":"Gualeguaychu (ER)","km":260,"tarifa_base":32311,"tarifa_vigente":35303,"catac":48413.09,"categoria":"Peligroso"},{"proveedor":"Exolgan","producto":"Biodiesel","destino":"Dock Sur","km":340,"tarifa_base":40898,"tarifa_vigente":44685,"catac":59845.78,"categoria":"Peligroso"},{"proveedor":"Andreani Logistica SA","producto":"Biodiesel","destino":"Tigre (BA)","km":291,"tarifa_base":39467,"tarifa_vigente":43122,"catac":53305.51,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Sigma - Gral. Rodriguez (BA)","km":316,"tarifa_base":39467,"tarifa_vigente":43122,"catac":56810.47,"categoria":"Peligroso"},{"proveedor":"Laboratorio Peyte S.A.","producto":"EMAG","destino":"Venado Tuerto (SF)","km":210,"tarifa_base":30396,"tarifa_vigente":33211,"catac":41058.27,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TSL","producto":"Biodiesel","destino":"Terminal San Lorenzo (SF)","km":14,"tarifa_base":17146,"tarifa_vigente":18734,"catac":11049.19,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TPG","producto":"Biodiesel","destino":"Terminal Galvan (BA)","km":800,"tarifa_base":118392,"tarifa_vigente":129355,"catac":93893.18,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TC","producto":"Biodiesel","destino":"Terminal Campana (BA)","km":261,"tarifa_base":34072,"tarifa_vigente":37227,"catac":48548.47,"categoria":"Peligroso"}];
 
 // Tabla CATAC embebida (Ene 2026 proyectada)
 const CP={1:9236.42,5:9236.42,10:9236.42,11:9454.49,12:9677.28,13:9900.11,14:10127.73,15:10362.52,16:10602.14,17:10841.7,18:11090.91,19:11344.89,20:11601.22,21:11819.31,22:12039.68,23:12269.71,24:12497.32,25:12734.52,26:12978.9,27:13225.71,28:13479.68,29:13740.85,30:14009.19,35:14828.58,40:15676.75,45:16553.7,50:17466.56,55:18206.89,60:18964.01,65:19745.15,70:20547.76,75:21381.56,80:22241.68,85:23137.77,90:24069.81,95:25042.59,100:26063.28,110:27323.53,120:28598.2,130:29899.18,138:30953.42,140:31219.35,150:32563.54,160:33933.97,170:35333.25,175:36042.45,180:36758.83,190:38217.97,200:39705.89,210:41093.1,220:42504.33,230:43944.33,240:45405.88,242:45700.54,245:46148.64,250:46896.15,260:48417.56,261:48568.54,270:49965.34,280:51549.09,290:53168.79,291:53331.72,300:54826.77,308:55825.9,310:56075.06,316:56825.0,320:57328.13,334:59093.98,340:59858.29,350:61130.54,354:61645.69,360:62417.16,365:63059.32,370:63708.61,400:67628.38,420:69473.29,427:70115.39,440:71313.36,450:72231.04,500:76831.3,550:79646.52,600:82298.86,650:84802.64,700:87165.04,750:90622.41,800:93962.42,850:96480.56,900:98914.83,950:101262.87,1000:103534.27,1100:108855.68,1200:113707.51,1300:118132.88,1400:122167.67,1500:125716.09};
@@ -711,6 +714,7 @@ let catacParsed = null;
 
 const db = firebase.firestore();
 const DOC_MODS       = db.collection('portal').doc('mods');
+const DOC_RUTAS      = db.collection('portal').doc('rutas');
 const DOC_PENDIENTES = db.collection('portal').doc('pendientes');
 const DOC_HISTORIAL  = db.collection('portal').doc('historial');
 const DOC_CATAC      = db.collection('portal').doc('catac');
@@ -718,15 +722,15 @@ const DOC_CONFIG     = db.collection('portal').doc('config');
 const DOC_RUTAS_NUEVAS = db.collection('portal').doc('rutas_nuevas');
 
 // Cache local para operaciones síncronas dentro de la sesión
-let _cache = { mods:{}, pendientes:[], historial:[], catac:null, catacVer:null, adminPw:null, rutasNuevas:[] };
+let _cache = { mods:{}, pendientes:[], historial:[], catac:null, catacVer:null, adminPw:null };
 let _cacheLoaded = false;
 
 // Carga inicial de todos los datos desde Firestore
 async function cargarDatosFirestore(){
   try {
-    const [mDoc, pDoc, hDoc, cDoc, cfDoc, rnDoc] = await Promise.all([
+    const [mDoc, pDoc, hDoc, cDoc, cfDoc, rDoc] = await Promise.all([
       DOC_MODS.get(), DOC_PENDIENTES.get(), DOC_HISTORIAL.get(),
-      DOC_CATAC.get(), DOC_CONFIG.get(), DOC_RUTAS_NUEVAS.get()
+      DOC_CATAC.get(), DOC_CONFIG.get(), DOC_RUTAS.get()
     ]);
     _cache.mods       = (mDoc.exists  && mDoc.data().data)  ? mDoc.data().data  : {};
     _cache.pendientes = (pDoc.exists  && pDoc.data().data)  ? pDoc.data().data  : [];
@@ -734,18 +738,25 @@ async function cargarDatosFirestore(){
     _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
     _cache.catacVer   = (cDoc.exists  && cDoc.data().ver)   ? cDoc.data().ver   : null;
     _cache.adminPw    = (cfDoc.exists && cfDoc.data().adminPw) ? cfDoc.data().adminPw : null;
-    _cache.rutasNuevas = (rnDoc.exists && rnDoc.data().lista) ? rnDoc.data().lista : [];
 
-    // Restaurar rutas nuevas al array T
-    _cache.rutasNuevas.forEach(ruta => {
-      const existe = T.findIndex(t=>t.destino===ruta.destino&&t.proveedor===ruta.proveedor);
-      if(existe < 0) T.push(ruta);
-    });
+    // Cargar T desde Firestore
+    if(rDoc.exists && rDoc.data().lista && rDoc.data().lista.length > 0){
+      // Usar rutas de Firestore (base + nuevas)
+      T.length = 0;
+      rDoc.data().lista.forEach(r => T.push(r));
+      console.log('Rutas cargadas desde Firestore:', T.length);
+    } else {
+      // Primera vez: cargar rutas base al array T y guardarlas en Firestore
+      T_BASE.forEach(r => T.push(r));
+      await DOC_RUTAS.set({lista: T_BASE});
+      console.log('Rutas base inicializadas en Firestore:', T.length);
+    }
 
     _cacheLoaded = true;
-    console.log('Firestore cargado OK. Rutas nuevas:', _cache.rutasNuevas.length);
   } catch(e) {
     console.error('Error cargando Firestore:', e);
+    // Fallback: usar rutas base del HTML
+    if(T.length === 0) T_BASE.forEach(r => T.push(r));
     _cacheLoaded = true;
   }
 }
@@ -883,10 +894,14 @@ function cambiarClave(){
 }
 
 // ── CONSULTA ──────────────────────────────────────────────
-const sp=document.getElementById('fp');
-[...new Set(T.map(t=>t.producto))].sort().forEach(p=>{
-  const o=document.createElement('option'); o.value=p; o.textContent=p; sp.appendChild(o);
-});
+function initProductSelector(){
+  const sp=document.getElementById('fp');
+  // Limpiar opciones existentes excepto la primera
+  while(sp.options.length > 1) sp.remove(1);
+  [...new Set(T.map(t=>t.producto))].sort().forEach(p=>{
+    const o=document.createElement('option'); o.value=p; o.textContent=p; sp.appendChild(o);
+  });
+}
 
 function getAllRows(){
   return T.map((t,i)=>{
@@ -1009,7 +1024,7 @@ async function confirmarAprobacion(){
     mods[idx]=pendingApproval.tarifa_vigente;
     hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:anterior,tarifaNueva:pendingApproval.tarifa_vigente,variacion:parseFloat(((pendingApproval.tarifa_vigente/anterior-1)*100).toFixed(2)),just:'Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
   } else {
-    // Ruta nueva: guardar en documento separado rutas_nuevas
+    // Ruta nueva: agregar a la lista de rutas en Firestore
     const nuevaRuta = {
       proveedor:pendingApproval.proveedor,
       producto:pendingApproval.producto,
@@ -1021,13 +1036,9 @@ async function confirmarAprobacion(){
       categoria:pendingApproval.categoria,
       esNueva:true
     };
-    const listaActual = _cache.rutasNuevas || [];
-    listaActual.push(nuevaRuta);
-    _cache.rutasNuevas = listaActual;
-    await DOC_RUTAS_NUEVAS.set({lista: listaActual});
-    hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:0,tarifaNueva:pendingApproval.tarifa_vigente,variacion:100,just:'Nueva ruta — Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
-    // Agregar al array T en memoria
     T.push(nuevaRuta);
+    await DOC_RUTAS.set({lista: [...T]});
+    hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:0,tarifaNueva:pendingApproval.tarifa_vigente,variacion:100,just:'Nueva ruta — Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
   }
   await saveMods(mods);
   await saveHistorial(hist);
@@ -1614,6 +1625,7 @@ async function initPortal(){
     console.warn('Firestore no disponible:', e);
   }
   if(wrap) wrap.style.opacity = '1';
+  initProductSelector();
   actualizarVersionCatac();
   updateProfileUI();
   render();
