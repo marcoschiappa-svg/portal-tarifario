@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://marcoschiappa-svg.github.io/portal-tarifario/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portal Tarifario — Explora</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+:root{--bg:#f7f6f2;--sur:#fff;--sur2:#f0ede6;--brd:#e2dfd6;--brd2:#ccc9bf;--tx:#1a1917;--tx2:#6b6760;--tx3:#9b9890;--ac:#1a3a2a;--acl:#e8f2ec;--ac2:#7c4a12;--ac2l:#fdf0e0;--dan:#8b1f1f;--danl:#fdeaea;--mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--r:8px;--rl:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px;line-height:1.5}
+.hdr{background:var(--ac);color:#fff;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+.hdr-l{display:flex;flex-direction:column;gap:2px}
+.hdr-brand{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.hdr-title{font-size:16px;font-weight:500}
+.hdr-r{display:flex;align-items:center;gap:12px}
+.profile-badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;font-size:12px;cursor:pointer;transition:background .15s}
+.profile-badge:hover{background:rgba(255,255,255,.18)}
+.profile-dot{width:8px;height:8px;border-radius:50%}
+.dot-user{background:#9FE1CB}
+.dot-admin{background:#FAC775}
+.hdr-meta{font-size:11px;opacity:.5;font-family:var(--mono)}
+.tabs{display:flex;gap:2px;padding:16px 28px 0;border-bottom:1px solid var(--brd);background:var(--sur)}
+.tab{padding:9px 18px;font-size:13px;font-weight:500;color:var(--tx2);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;border-radius:var(--r) var(--r) 0 0;user-select:none}
+.tab:hover{color:var(--tx);background:var(--sur2)}
+.tab.active{color:var(--ac);border-bottom-color:var(--ac);background:var(--bg)}
+.wrap{padding:22px 28px;max-width:1280px}
+.panel{display:none}.panel.active{display:block}
+.filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:flex-end}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em}
+.fg input,.fg select{height:34px;padding:0 10px;border:1px solid var(--brd);border-radius:var(--r);font-family:var(--sans);font-size:13px;background:var(--sur);color:var(--tx);outline:none;transition:border-color .15s;min-width:160px}
+.fg input:focus,.fg select:focus{border-color:var(--ac)}
+.fg input[type=search]{min-width:220px}
+.btn{height:34px;padding:0 14px;border-radius:var(--r);font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--brd2);background:var(--sur);color:var(--tx2);transition:all .15s;white-space:nowrap}
+.btn:hover{background:var(--sur2);color:var(--tx)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-p{background:var(--ac);color:#fff;border-color:var(--ac)}.btn-p:hover:not(:disabled){background:#2a4a3a}
+.btn-approve{background:#166534;color:#fff;border-color:#166534;font-size:13px;height:40px;padding:0 18px}.btn-approve:hover:not(:disabled){background:#0f4a26}
+.btn-danger{background:var(--dan);color:#fff;border-color:var(--dan)}.btn-danger:hover{background:#6b1515}
+.stats{display:flex;gap:12px;margin-bottom:14px}
+.stat{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r);padding:8px 14px}
+.stat-l{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.stat-v{font-size:18px;font-weight:600;font-family:var(--mono)}
+.tbl-wrap{overflow-x:auto;border-radius:var(--rl);border:1px solid var(--brd);background:var(--sur)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{background:var(--sur2)}
+th{padding:9px 12px;text-align:left;font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-bottom:1px solid var(--brd)}
+th.r,td.r{text-align:right}
+td{padding:9px 12px;border-bottom:1px solid var(--brd);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--sur2)}
+tbody tr.row-mod td{background:#f0fdf4}
+.mono{font-family:var(--mono);font-size:11px}
+.bdg{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:.04em;text-transform:uppercase}
+.bp{background:var(--danl);color:var(--dan)}.bg2{background:var(--acl);color:var(--ac)}
+.bdg-mod{background:#dcfce7;color:#166534}
+.ok{color:#166534;font-weight:600}.warn{color:#854f0b;font-weight:600}.dan{color:#8b1f1f;font-weight:600}
+.no-res{text-align:center;padding:36px;color:var(--tx3);font-size:13px}
+.gen-lay{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
+.gen-form,.res-card{background:var(--sur);border:1px solid var(--brd);border-radius:var(--rl);padding:22px}
+.card-h{font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.fr{margin-bottom:14px}
+.fr label{display:block;font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+.fr input,.fr select{width:100%;height:38px;padding:0 10px;border:1px solid var(--brd);border-radius:var(--r);font-family:var(--sans);font-size:13px;background:var(--sur);color:var(--tx);outline:none;transition:border-color .15s}
+.fr input:focus,.fr select:focus{border-color:var(--ac)}
+.fr input:disabled,.fr select:disabled{background:var(--sur2);color:var(--tx3);cursor:not-allowed}
+.res-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;color:var(--tx3);font-size:13px;gap:8px}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.ri{background:var(--sur2);border-radius:var(--r);padding:12px 14px}
+.rl2{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.rv{font-size:20px;font-weight:600;font-family:var(--mono)}
+.rs{font-size:11px;color:var(--tx2);margin-top:3px}
+.ri.rac{background:var(--acl);border:1px solid #b8d8c4}.ri.rac .rl2{color:#2a5a3a}.ri.rac .rv{color:var(--ac)}
+hr.dv{border:none;border-top:1px solid var(--brd);margin:12px 0}
+.siml{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.ct{width:100%;border-collapse:collapse;font-size:12px}
+.ct th{padding:5px 8px;text-align:left;font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;border-bottom:1px solid var(--brd)}
+.ct th.r{text-align:right}
+.ct td{padding:7px 8px;border-bottom:1px solid var(--brd)}
+.ct td.r{text-align:right;font-family:var(--mono);font-size:11px}
+.ct tr:last-child td{border-bottom:none}
+.approve-bar{margin-top:16px;padding:14px 16px;background:var(--acl);border:1px solid #b8d8c4;border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.approve-bar-info{font-size:13px;color:#2a5a3a;flex:1}
+.approve-bar-info strong{font-weight:600}
+.info-bar{margin-top:14px;padding:10px 14px;background:#fef9c3;border:1px solid #fde047;border-radius:var(--r);font-size:12px;color:#713f12}
+.editor-lay{display:flex;flex-direction:column;gap:20px}
+.editor-top{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.editor-section{background:var(--sur);border:1px solid var(--brd);border-radius:var(--rl);padding:18px}
+.editor-section h3{font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+.preview-row{background:#fef9c3;border:1px solid #fde047;border-radius:var(--r);padding:10px 14px;font-size:12px;color:#713f12;margin-bottom:12px;display:none}
+.pendiente-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#854f0b;margin-right:5px}
+input.edited{background:#fef9c3;border-color:#fde047}
+.hist-table{width:100%;border-collapse:collapse;font-size:12px}
+.hist-table th{padding:7px 10px;text-align:left;font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;border-bottom:1px solid var(--brd);background:var(--sur2)}
+.hist-table th.r{text-align:right}
+.hist-table td{padding:7px 10px;border-bottom:0.5px solid var(--brd);vertical-align:top}
+.hist-table td.r{text-align:right;font-family:var(--mono);font-size:11px}
+.hist-table tr:last-child td{border-bottom:none}
+.tag-catamp{background:var(--danl);color:var(--dan);font-size:9px;font-weight:700;padding:2px 6px;border-radius:20px}
+.tag-catac{background:var(--acl);color:var(--ac);font-size:9px;font-weight:700;padding:2px 6px;border-radius:20px}
+.tag-otro{background:var(--sur2);color:var(--tx2);font-size:9px;font-weight:700;padding:2px 6px;border-radius:20px}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--sur);border-radius:var(--rl);padding:28px;width:380px;max-width:90vw}
+.modal h3{font-size:15px;font-weight:500;margin-bottom:6px}
+.modal p{font-size:13px;color:var(--tx2);margin-bottom:18px}
+.modal .fr{margin-bottom:12px}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}
+.modal-err{font-size:12px;color:var(--dan);margin-top:6px;min-height:16px}
+.admin-section{background:var(--sur);border:1px solid var(--brd);border-radius:var(--rl);padding:20px;margin-bottom:16px}
+.admin-section h3{font-size:13px;font-weight:600;color:var(--tx2);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ratio-lay{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+</style>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     PANTALLA DE AUTENTICACIÓN FIREBASE
+     Se oculta automáticamente tras login exitoso.
+     El portal de abajo no es accesible mientras esto esté visible.
+═══════════════════════════════════════════════════════ -->
+<div id="auth-screen" style="position: fixed; inset: 0px; z-index: 9999; background: rgb(247, 246, 242); display: none; align-items: center; justify-content: center; font-family: &quot;DM Sans&quot;, sans-serif;">
+  <div style="
+    background:#fff;border:1px solid #e2dfd6;border-radius:14px;
+    padding:44px 48px;width:100%;max-width:400px;text-align:center;
+    box-shadow:0 4px 24px rgba(0,0,0,.08)">
+
+    <!-- Logo / Marca -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9b9890;margin-bottom:6px">EXPLORA S.A.</div>
+    <div style="font-size:20px;font-weight:600;color:#1a3a2a;margin-bottom:6px">Portal Tarifario</div>
+    <div style="font-size:12px;color:#9b9890;margin-bottom:32px">Acceso restringido a usuarios autorizados</div>
+
+    <!-- Estado: inicial -->
+    <div id="auth-initial">
+      <button onclick="signInWithGoogle()" style="
+        display:flex;align-items:center;justify-content:center;gap:10px;
+        width:100%;height:44px;border-radius:8px;
+        border:1px solid #e2dfd6;background:#fff;
+        font-family:&#39;DM Sans&#39;,sans-serif;font-size:14px;font-weight:500;
+        color:#1a1917;cursor:pointer;transition:background .15s;" onmouseover="this.style.background=&#39;#f7f6f2&#39;" onmouseout="this.style.background=&#39;#fff&#39;">
+        <svg width="18" height="18" viewBox="0 0 48 48">
+          <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.8 2.5 30.2 0 24 0 14.6 0 6.6 5.5 2.7 13.5l7.9 6.1C12.5 13.4 17.8 9.5 24 9.5z"></path>
+          <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17z"></path>
+          <path fill="#FBBC05" d="M10.6 28.4A14.8 14.8 0 0 1 9.5 24c0-1.5.3-3 .7-4.4L2.3 13.5A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.1-6.2z"></path>
+          <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4-13.4-9.5l-8 6.2C6.6 42.5 14.6 48 24 48z"></path>
+        </svg>
+        Ingresar con Google
+      </button>
+    </div>
+
+    <!-- Estado: verificando -->
+    <div id="auth-checking" style="display:none">
+      <div style="font-size:13px;color:#6b6760">Verificando acceso…</div>
+    </div>
+
+    <!-- Estado: sin acceso -->
+    <div id="auth-denied" style="display:none">
+      <div style="background:#fdeaea;border:1px solid #f5c6c6;border-radius:8px;padding:14px;margin-bottom:20px;font-size:13px;color:#8b1f1f;line-height:1.5">
+        Tu cuenta <strong id="denied-email"></strong> no tiene acceso al portal.<br>
+        Contactá al administrador para solicitar habilitación.
+      </div>
+      <button onclick="signOut()" style="
+        height:36px;padding:0 18px;border-radius:8px;
+        border:1px solid #e2dfd6;background:#fff;
+        font-family:&#39;DM Sans&#39;,sans-serif;font-size:13px;color:#6b6760;cursor:pointer">
+        Usar otra cuenta
+      </button>
+    </div>
+
+    <!-- Estado: error -->
+    <div id="auth-error" style="display:none">
+      <div style="font-size:13px;color:#8b1f1f;margin-bottom:16px" id="auth-error-msg"></div>
+      <button onclick="showAuthInitial()" style="
+        height:36px;padding:0 18px;border-radius:8px;
+        border:1px solid #e2dfd6;background:#fff;
+        font-family:&#39;DM Sans&#39;,sans-serif;font-size:13px;color:#6b6760;cursor:pointer">
+        Reintentar
+      </button>
+    </div>
+
+  </div>
+</div>
+<!-- FIN PANTALLA AUTH ══════════════════════════════════ -->
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="hdr-brand">Explora S.A.</div>
+    <div class="hdr-title">Portal Tarifario de Fletes</div>
+  </div>
+  <div class="hdr-r">
+    <div class="profile-badge" onclick="openLogin()" id="profile-btn">
+      <div class="profile-dot dot-user" id="profile-dot"></div>
+      <span id="profile-label">Usuario</span>
+    </div>
+    <div class="hdr-meta">Abr 2026 · +9.26% sobre Mar 2026</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div style="background:var(--sur);border-bottom:1px solid var(--brd)">
+  <div class="tabs">
+    <div class="tab active" onclick="sw(&#39;c&#39;)">Consulta de tarifas</div>
+    <div class="tab" onclick="sw(&#39;g&#39;)">Generador</div>
+    <div class="tab" onclick="sw(&#39;r&#39;)">Ratios peligrosas</div>
+    <div class="tab admin-only" id="tab-admin" style="display:none" onclick="sw(&#39;a&#39;)">Administración</div>
+    <div class="tab admin-only" id="tab-editor" style="display:none" onclick="sw(&#39;e&#39;)">Editor de tarifas</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- PANEL CONSULTA -->
+<div class="panel active" id="pc">
+  <div class="filters">
+    <div class="fg"><label>Buscar</label><input type="search" id="q" placeholder="Cliente, destino, producto..." oninput="render()"></div>
+    <div class="fg"><label>Categoría</label>
+      <select id="fc" onchange="render()"><option value="">Todas</option><option value="General">General</option><option value="Peligroso">Peligroso</option></select>
+    </div>
+    <div class="fg"><label>Producto</label><select id="fp" onchange="render()"><option value="">Todos</option><option value="Aceite">Aceite</option><option value="Biodiesel">Biodiesel</option><option value="EMAG">EMAG</option><option value="Glicerina">Glicerina</option><option value="Glicerina Tecnica">Glicerina Tecnica</option><option value="Oleina">Oleina</option><option value="RINP / HFFA">RINP / HFFA</option></select></div>
+    <div class="fg" style="margin-left:auto;display:flex;gap:8px;align-items:flex-end"><label>&nbsp;</label>
+      <button class="btn" onclick="limpiar()">Limpiar</button>
+      <span id="btns-pdf-consulta" style="display:none;gap:8px">
+        <button class="btn" style="background:#1b3d2b;color:#fff;border:none" onclick="exportarExcel(false)">⬇ Excel — todas</button>
+        <button class="btn" style="background:#2a5a7a;color:#fff;border:none" onclick="exportarExcel(true)">⬇ Excel — seleccionadas</button>
+      </span>
+    </div>
+  </div>
+  <div class="stats" id="st"></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><input type="checkbox" id="chk-consulta-all" title="Seleccionar todas" onchange="document.querySelectorAll(&#39;.chk-consulta&#39;).forEach(c=&gt;c.checked=this.checked)" style="cursor:pointer"></th>
+        <th>Cliente / Proveedor</th><th>Producto</th><th>Destino</th>
+        <th class="r">km</th><th>Cat.</th>
+        <th class="r">Tarifa vigente</th>
+        <th class="r">Ref. CATAC</th><th class="r">Brecha</th><th>Estado</th>
+      </tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PANEL GENERADOR -->
+<div class="panel" id="pg">
+  <div class="gen-lay">
+    <div class="gen-form">
+      <div class="card-h">Parámetros</div>
+      <div id="admin-fields" style="display:none">
+        <div class="fr"><label>Cliente / Proveedor</label>
+          <input type="text" id="gcliente" placeholder="Nombre del cliente" oninput="calc()">
+        </div>
+      </div>
+      <div class="fr"><label>Destino</label>
+        <input type="text" id="gdestino" placeholder="Destino de la ruta" oninput="calc()">
+      </div>
+      <div class="fr"><label>Distancia (km)</label>
+        <input type="number" id="gkm" min="1" max="1500" placeholder="Ej: 280" oninput="calc()">
+      </div>
+      <div class="fr"><label>Tipo de producto</label>
+        <select id="gprod" onchange="calc()">
+          <option value="">— Seleccionar —</option>
+          <option value="Aceite">Aceite de soja</option>
+          <option value="Glicerina">Glicerina</option>
+          <option value="Oleina">Oleína</option>
+          <option value="RINP / HFFA">RINP / HFFA</option>
+          <option value="EMAG">EMAG</option>
+          <option value="Biodiesel">Biodiesel</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div id="seg-info" style="display:none;margin-top:10px;background:var(--acl);border-radius:var(--r);padding:10px 12px;font-size:11px;line-height:1.6;color:#2a5a3a">
+        <strong>Ruta de referencia:</strong> <span id="seg-txt"></span>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="card-h">Resultado</div>
+      <div id="gres">
+        <div class="res-empty">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>Completá km y producto para calcular</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL RATIOS -->
+<div class="panel" id="pr">
+  <div class="ratio-lay">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Ratios Tarifa Vigente / CATAC (23 rutas)</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Ruta</th><th class="r">km</th><th class="r">Tarifa vigente</th><th class="r">CATAC</th><th class="r">Ratio</th><th class="r">Dif.</th></tr></thead>
+          <tbody id="ratio-tb"></tbody>
+        </table>
+      </div>
+      <div style="font-size:11px;color:var(--tx3);margin-top:8px;line-height:1.5">Excluidos: Formulagro · Ararami · PAE TSL · PAE TPG (negociaciones específicas).</div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Referencia por segmento</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Segmento</th><th class="r">n</th><th class="r">Ratio prom.</th><th class="r">Rango</th><th class="r">vs CATAC</th></tr></thead>
+          <tbody>
+            <tr><td>0 – 50 km</td><td class="r">1</td><td class="r">0.748</td><td class="r" style="color:var(--tx2)">0.748</td><td class="r warn">−25.2%</td></tr>
+            <tr><td>50 – 150 km</td><td class="r">1</td><td class="r">1.107</td><td class="r" style="color:var(--tx2)">1.107</td><td class="r dan">+10.7%</td></tr>
+            <tr><td>150 – 300 km</td><td class="r">8</td><td class="r">0.782</td><td class="r" style="color:var(--tx2)">0.68–0.85</td><td class="r warn">−21.8%</td></tr>
+            <tr><td>300 – 500 km</td><td class="r">11</td><td class="r">0.753</td><td class="r" style="color:var(--tx2)">0.68–0.83</td><td class="r warn">−24.7%</td></tr>
+            <tr><td>500+ km</td><td class="r">2</td><td class="r">0.993</td><td class="r" style="color:var(--tx2)">0.95–1.04</td><td class="r ok">≈ CATAC</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Dispersión ratio vs km</div>
+        <div style="position:relative;height:200px"><canvas id="chartRatio"></canvas></div>
+      </div>
+      <div style="background:var(--sur2);border-radius:var(--r);padding:12px 14px;margin-top:14px;font-size:12px;line-height:1.7;color:var(--tx2)">
+        Tendencia lineal: ratio ≈ 0.745 + 0.000161 × km. A 200 km: 0.777 · A 400 km: 0.809 · A 700 km: 0.858.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL ADMIN -->
+<div class="panel" id="pa">
+  <div class="two-col">
+    <div>
+      <div class="admin-section">
+        <h3>Cambiar clave de administrador</h3>
+        <div class="fr"><label>Clave actual</label><input type="password" id="old-pw" placeholder="Clave actual"></div>
+        <div class="fr"><label>Nueva clave</label><input type="password" id="new-pw" placeholder="Nueva clave (mín. 6 caracteres)"></div>
+        <div class="fr"><label>Confirmar nueva clave</label><input type="password" id="conf-pw" placeholder="Repetir nueva clave"></div>
+        <div id="pw-msg" style="font-size:12px;min-height:16px;margin-bottom:8px"></div>
+        <button class="btn btn-p" onclick="cambiarClave()">Actualizar clave</button>
+      </div>
+    </div>
+    <div>
+      <div class="admin-section">
+        <h3>Tarifas modificadas <span id="aprobadas-count" style="font-size:11px;font-weight:400;color:var(--tx3)">(2 registros)</span></h3>
+        <div id="aprobadas-list">
+          <div style="color:var(--tx3);font-size:13px;padding:12px 0">No hay tarifas modificadas guardadas.</div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" style="background:#1b3d2b;color:#fff;border:none" onclick="exportarExcelMods(false)">⬇ Excel — todas</button>
+          <button class="btn" style="background:#2a5a7a;color:#fff;border:none" onclick="exportarExcelMods(true)">⬇ Excel — seleccionadas</button>
+          <button class="btn" onclick="exportarAprobadas()">CSV</button>
+          <button class="btn btn-danger" onclick="confirmarBorrarTodas()">Borrar todas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL EDITOR -->
+<div class="panel" id="pe">
+  <div class="editor-lay">
+    <div class="editor-top">
+
+      <!-- GLOBAL -->
+      <div class="editor-section">
+        <h3>Actualización global</h3>
+        <div class="fr"><label>Aplicar sobre</label>
+          <select id="ed-scope">
+            <option value="all">Toda la cartera</option>
+            <option value="General">Solo carga general</option>
+            <option value="Peligroso">Solo sustancias peligrosas</option>
+          </select>
+        </div>
+        <div class="fr"><label>Índice / % de ajuste</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="number" id="ed-pct" step="0.01" placeholder="Ej: 9.26" style="flex:1">
+            <span style="font-size:13px;color:var(--tx2)">%</span>
+          </div>
+        </div>
+        <div class="fr"><label>Referencia</label>
+          <select id="ed-ref">
+            <option value="CATAMP">Índice CATAMP</option>
+            <option value="CATAC">Índice CATAC</option>
+            <option value="Combustible">Cláusula combustible</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="fr"><label>Justificación</label>
+          <input type="text" id="ed-just" placeholder="Ej: CATAMP Abr 2026 +9.26%">
+        </div>
+        <button class="btn btn-p" style="width:100%" onclick="previewGlobal()">Vista previa</button>
+        <div class="preview-row" id="ed-preview"></div>
+        <button class="btn" id="ed-confirm-btn" style="width:100%;margin-top:8px;display:none" onclick="confirmarGlobal()">Confirmar y poner en pendiente</button>
+      </div>
+
+      <!-- INDIVIDUAL -->
+      <div class="editor-section">
+        <h3>Edición individual</h3>
+        <p style="font-size:12px;color:var(--tx2);margin-bottom:12px">Modificá el valor de una ruta específica. Los cambios quedan pendientes hasta aprobar.</p>
+        <div class="fr"><label>Buscar ruta</label>
+          <input type="search" id="ed-search" placeholder="Cliente o destino..." oninput="renderEditorTabla()">
+        </div>
+        <div class="fr"><label>Justificación para cambios individuales</label>
+          <input type="text" id="ed-just-ind" placeholder="Motivo de la corrección">
+        </div>
+        <div style="font-size:11px;color:var(--tx3);margin-bottom:6px">Editá el campo Tarifa vigente directamente en la tabla de abajo.</div>
+      </div>
+    </div>
+
+    <!-- TABLA EDITABLE -->
+    <div class="editor-section" style="padding:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">Tarifas vigentes — editables</div>
+        <div style="display:flex;gap:8px">
+          <span id="pendientes-count" style="font-size:12px;color:#854f0b;display:none"></span>
+          <button class="btn btn-approve" id="btn-aprobar-editor" style="display:none;height:30px;font-size:12px" onclick="aprobarPendientes()">Aprobar cambios pendientes</button>
+          <button class="btn" style="height:30px;font-size:12px" onclick="descartarPendientes()">Descartar pendientes</button>
+          <button class="btn btn-danger" style="height:30px;font-size:12px" onclick="revertirOverrides()">Revertir a base (Mar 2026)</button>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Cliente</th><th>Destino</th><th class="r">km</th><th>Cat.</th>
+            <th class="r">Tarifa vigente</th><th class="r">Nueva tarifa</th><th class="r">Variación</th><th>Estado</th><th>Acciones</th>
+          </tr></thead>
+          <tbody id="editor-tb"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ACTUALIZAR CATAC -->
+    <div class="editor-section">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <h3>Actualizar tabla de referencia CATAC</h3>
+        <span id="catac-version" style="font-size:11px;color:var(--tx3)">Usando tabla embebida (CATAC Ene-2026 proy.)</span>
+      </div>
+      <p style="font-size:12px;color:var(--tx2);margin-bottom:14px">Cuando recibas la nueva tabla CATAC en PDF, abrila, seleccioná todo el texto y pegalo acá. El portal detecta automáticamente los pares km/valor en formato argentino (ej: <span style="font-family:var(--mono)">280 47.178,13</span>).</p>
+      <div class="fr">
+        <label>Texto copiado del PDF CATAC</label>
+        <textarea id="catac-txt" rows="6" style="width:100%;padding:10px;border:1px solid var(--brd);border-radius:var(--r);font-family:var(--mono);font-size:11px;resize:vertical;background:var(--sur);color:var(--tx);outline:none" placeholder="Pegá aquí el texto del PDF..."></textarea>
+      </div>
+      <div class="fr"><label>Descripción / versión</label>
+        <input type="text" id="catac-desc" placeholder="Ej: CATAC Febrero 2026 — publicado 28/02/2026">
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-p" onclick="parsearCatac()">Validar tabla</button>
+        <button class="btn btn-approve" id="catac-confirm-btn" style="display:none;height:34px;font-size:12px" onclick="confirmarCatac()">Confirmar y activar</button>
+        <span id="catac-parse-msg" style="font-size:12px;color:var(--tx2)"></span>
+      </div>
+      <div id="catac-preview" style="display:none;margin-top:12px;background:var(--acl);border-radius:var(--r);padding:12px 14px;font-size:12px;line-height:1.8;color:#2a5a3a"></div>
+    </div>
+
+    <!-- VALIDADOR DE AJUSTE -->
+    <div class="editor-section">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">Validador de ajuste</div>
+        <div style="font-size:11px;color:var(--tx3)">Verificá el impacto antes de aplicar cualquier cambio</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px">
+        <div class="fr" style="margin:0">
+          <label>Índice 1 (%)</label>
+          <input type="number" id="val-idx1" step="0.01" placeholder="Ej: 2.58" oninput="calcValidador()">
+        </div>
+        <div class="fr" style="margin:0">
+          <label>Índice 2 (%) — opcional</label>
+          <input type="number" id="val-idx2" step="0.01" placeholder="Ej: 2.26" oninput="calcValidador()">
+        </div>
+        <div class="fr" style="margin:0">
+          <label>Alerta si supera (%)</label>
+          <input type="number" id="val-umbral" step="0.1" value="15" oninput="calcValidador()">
+        </div>
+      </div>
+      <div id="val-resultado" style="display:none">
+        <div id="val-resumen" style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap"></div>
+        <div id="val-alerta" style="display:none;padding:10px 14px;background:var(--danl);border:1px solid var(--dan);border-radius:var(--r);font-size:12px;font-weight:600;color:var(--dan);margin-bottom:14px"></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr>
+              <th>Cliente</th><th>Destino</th><th class="r">km</th><th>Cat.</th>
+              <th class="r">Tarifa vigente</th><th class="r">Resultado</th><th class="r">Variación</th>
+            </tr></thead>
+            <tbody id="val-tb"></tbody>
+          </table>
+        </div>
+        <div style="font-size:11px;color:var(--tx3);margin-top:8px">Muestra representativa: mínimo, máximo y 3 intermedias de cada segmento.</div>
+      </div>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div class="editor-section">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">Historial de cambios</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" style="height:28px;font-size:11px" onclick="exportarHistorial()">Exportar CSV</button>
+          <button class="btn btn-danger" style="height:28px;font-size:11px" onclick="borrarHistorial()">Borrar historial</button>
+        </div>
+      </div>
+      <div id="historial-wrap">
+        <div style="color:var(--tx3);font-size:13px;padding:12px 0">Sin cambios registrados.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- MODAL LOGIN -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal">
+    <h3>Acceso de administrador</h3>
+    <p>Ingresá la clave para activar el modo administrador.</p>
+    <div class="fr"><label>Clave</label><input type="password" id="login-pw" placeholder="Clave de administrador" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()"></div>
+    <div class="modal-err" id="login-err"></div>
+    <div class="modal-btns">
+      <button class="btn" onclick="closeModal(&#39;modal-login&#39;)">Cancelar</button>
+      <button class="btn btn-p" onclick="doLogin()">Ingresar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL LOGOUT -->
+<div class="modal-overlay" id="modal-logout">
+  <div class="modal">
+    <h3>Cerrar sesión admin</h3>
+    <p>¿Querés cerrar la sesión de administrador y volver al perfil de usuario?</p>
+    <div class="modal-btns">
+      <button class="btn" onclick="closeModal(&#39;modal-logout&#39;)">Cancelar</button>
+      <button class="btn btn-danger" onclick="doLogout()">Cerrar sesión</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR LINEA -->
+<div class="modal-overlay" id="modal-editar-linea">
+  <div class="modal" style="width:480px">
+    <h3>Editar línea</h3>
+    <p>Modificá los datos de la ruta. Los cambios son inmediatos y se registran en el historial.</p>
+    <input type="hidden" id="el-idx">
+    <div class="fr"><label>Cliente / Proveedor</label><input type="text" id="el-proveedor"></div>
+    <div class="fr"><label>Producto</label>
+      <select id="el-producto">
+        <option value="Aceite">Aceite de soja</option>
+        <option value="Glicerina">Glicerina</option>
+        <option value="Glicerina Tecnica">Glicerina Técnica</option>
+        <option value="Oleina">Oleína</option>
+        <option value="RINP / HFFA">RINP / HFFA</option>
+        <option value="EMAG">EMAG</option>
+        <option value="Biodiesel">Biodiesel</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+    <div class="fr"><label>Destino</label><input type="text" id="el-destino"></div>
+    <div class="fr"><label>Distancia (km)</label><input type="number" id="el-km" min="1" max="1500"></div>
+    <div class="fr"><label>Categoría</label>
+      <select id="el-categoria">
+        <option value="General">General</option>
+        <option value="Peligroso">Peligroso</option>
+      </select>
+    </div>
+    <div class="modal-err" id="el-err"></div>
+    <div class="modal-btns">
+      <button class="btn" onclick="closeModal(&#39;modal-editar-linea&#39;)">Cancelar</button>
+      <button class="btn btn-p" onclick="confirmarEditorLinea()">Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL APROBAR -->
+<div class="modal-overlay" id="modal-aprobar">
+  <div class="modal">
+    <h3>Aprobar tarifa</h3>
+    <p id="aprobar-desc">Confirmá que esta tarifa pasa a vigente.</p>
+    <div class="fr"><label>Clave de administrador</label>
+      <input type="password" id="aprobar-pw" placeholder="Clave admin" onkeydown="if(event.key===&#39;Enter&#39;)confirmarAprobacion()">
+    </div>
+    <div class="modal-err" id="aprobar-err"></div>
+    <div class="modal-btns">
+      <button class="btn" onclick="closeModal(&#39;modal-aprobar&#39;)">Cancelar</button>
+      <button class="btn btn-approve" onclick="confirmarAprobacion()">Aprobar y pasar a vigente</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+// ══════════════════════════════════════════════════════════
+// FIREBASE AUTHENTICATION
+// ══════════════════════════════════════════════════════════
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA_cmSLuKPVYXjgQu75varhmEBkaY0uwss",
+  authDomain: "explora-portal.firebaseapp.com",
+  projectId: "explora-portal",
+  storageBucket: "explora-portal.firebasestorage.app",
+  messagingSenderId: "871895783017",
+  appId: "1:871895783017:web:babe9df2f105e0e44774f8"
+};
+firebase.initializeApp(firebaseConfig);
+const fbAuth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+// ── LISTA DE CORREOS AUTORIZADOS ───────────────────────────
+// Agregá o quitá correos según necesites.
+// Los correos son case-insensitive (se comparan en minúsculas).
+const CORREOS_AUTORIZADOS = [
+"marcos.chiappa@explora.com.ar",
+"julian.deparis@explora.com.ar",
+"hernan.delorenzi@explora.com.ar",
+"marcelo.zain@explora.com.ar",
+"joaquina.cristeche@explora.com.ar",
+"luis.hernandez@explora.com.ar",
+"benjamin.echevez@explora.com.ar",
+];
+
+// ── HELPERS PANTALLA AUTH ──────────────────────────────────
+function showAuthInitial()   { setAuthState('initial'); }
+function showAuthChecking()  { setAuthState('checking'); }
+function showAuthDenied(email) {
+  document.getElementById('denied-email').textContent = email;
+  setAuthState('denied');
+}
+function showAuthError(msg) {
+  document.getElementById('auth-error-msg').textContent = msg;
+  setAuthState('error');
+}
+function setAuthState(state) {
+  ['initial','checking','denied','error'].forEach(s =>
+    document.getElementById('auth-'+s).style.display = s===state ? 'block' : 'none'
+  );
+}
+
+function signInWithGoogle() {
+  showAuthChecking();
+  fbAuth.signInWithPopup(googleProvider).catch(err => {
+    if (err.code === 'auth/popup-closed-by-user') {
+      showAuthInitial();
+    } else {
+      showAuthError('Error al iniciar sesión. Intentá de nuevo.');
+    }
+  });
+}
+
+function signOut() {
+  fbAuth.signOut().then(() => showAuthInitial());
+}
+
+// ── OBSERVADOR DE SESIÓN ───────────────────────────────────
+// Cada vez que cambia el estado de auth (login / logout / carga inicial)
+// este listener decide si mostrar el portal o la pantalla de acceso.
+fbAuth.onAuthStateChanged(user => {
+  if (!user) {
+    // Sin sesión → mostrar pantalla de login
+    document.getElementById('auth-screen').style.display = 'flex';
+    showAuthInitial();
+    return;
+  }
+
+  // Con sesión → verificar si el correo está autorizado
+  const email = (user.email || '').toLowerCase();
+
+  if (CORREOS_AUTORIZADOS.length === 0 || CORREOS_AUTORIZADOS.map(e=>e.toLowerCase()).includes(email)) {
+    // Autorizado → ocultar pantalla y mostrar portal
+    document.getElementById('auth-screen').style.display = 'none';
+    // Cargar datos de Firestore e inicializar portal
+    initPortal();
+  } else {
+    // No autorizado → mostrar pantalla de acceso denegado
+    document.getElementById('auth-screen').style.display = 'flex';
+    showAuthDenied(user.email);
+  }
+});
+
+// ══════════════════════════════════════════════════════════
+// FIN FIREBASE AUTH — todo lo que sigue es el portal original
+// ══════════════════════════════════════════════════════════
+
+// ── DATOS BASE ────────────────────────────────────────────
+// tarifa_base = Mar 2026 (punto cero)
+// tarifa_vigente = base × 1.0926 (+9.26% CATAMP Feb+Mar 2026)
+const T=[{"proveedor":"Bioils Argentina S.A.","producto":"Aceite","destino":"COFCO Pto.Gral.San Martin (SF)","km":29,"tarifa_base":8408,"tarifa_vigente":9187,"catac":13721.38,"categoria":"General"},{"proveedor":"Frigorifico Soychu SAICFIA","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Molinos Agro S.A. - San Lorenzo","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Union Agricola Avellaneda COOP LTDA","producto":"Aceite","destino":"Vicentin - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"BLD Agro S.A.","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Asoc. Coop. Argentinas COOP LTDA","producto":"Aceite","destino":"Vicentin - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Asoc. Coop. Argentinas COOP LTDA","producto":"Aceite","destino":"Molinos - San Lorenzo (SF)","km":29,"tarifa_base":8967,"tarifa_vigente":9797,"catac":13721.38,"categoria":"General"},{"proveedor":"Viterra Argentina S. A.","producto":"Aceite","destino":"Renova - Timbues (SF)","km":20,"tarifa_base":9133,"tarifa_vigente":9979,"catac":11584.79,"categoria":"General"},{"proveedor":"LDC Argentina S.A.","producto":"Aceite","destino":"LDC - Timbues (SF)","km":20,"tarifa_base":9133,"tarifa_vigente":9979,"catac":11584.79,"categoria":"General"},{"proveedor":"LDC Argentina S.A.","producto":"Aceite","destino":"General Lagos","km":71,"tarifa_base":15783,"tarifa_vigente":17245,"catac":20683.74,"categoria":"General"},{"proveedor":"Cargill SACEI","producto":"Aceite","destino":"Cargill Villa Gob. Galvez (SF)","km":62,"tarifa_base":14405,"tarifa_vigente":15739,"catac":19248.19,"categoria":"General"},{"proveedor":"Agricultores Federados Arg. SCL","producto":"Aceite","destino":"AFA Los Cardos (SF)","km":138,"tarifa_base":23890,"tarifa_vigente":26102,"catac":30909.56,"categoria":"General"},{"proveedor":"ECOPOR","producto":"EMAG","destino":"Bella Vista","km":320,"tarifa_base":43629,"tarifa_vigente":47669,"catac":57316.7,"categoria":"General"},{"proveedor":"Laruso","producto":"Oleina","destino":"Canada Rosquin","km":120,"tarifa_base":21747,"tarifa_vigente":23761,"catac":28590.2,"categoria":"General"},{"proveedor":"Alianza Nutrientes S.A","producto":"Glicerina","destino":"Lima (BS)","km":242,"tarifa_base":35012,"tarifa_vigente":38254,"catac":45682.69,"categoria":"General"},{"proveedor":"Glycopharma","producto":"Glicerina Tecnica","destino":"Nogoya","km":129,"tarifa_base":22506,"tarifa_vigente":24590,"catac":29752.42,"categoria":"General"},{"proveedor":"Solamb S.R.L","producto":"RINP / HFFA","destino":"Timbues (SF)","km":18,"tarifa_base":7578,"tarifa_vigente":8280,"catac":11075.2,"categoria":"Peligroso"},{"proveedor":"Alltec SA","producto":"EMAG","destino":"Puerto Tirol (CH)","km":700,"tarifa_base":75952,"tarifa_vigente":82985,"catac":87165.04,"categoria":"Peligroso"},{"proveedor":"Formulagro","producto":"EMAG","destino":"San Lorenzo (SF)","km":5,"tarifa_base":17146,"tarifa_vigente":18734,"catac":9233.51,"categoria":"Peligroso"},{"proveedor":"Lab. San Pablo Prod. Biologicos","producto":"EMAG","destino":"Tucuman (TUC)","km":950,"tarifa_base":95880,"tarifa_vigente":104758,"catac":101289.99,"categoria":"Peligroso"},{"proveedor":"Ararami","producto":"EMAG","destino":"Figuiera (SF)","km":80,"tarifa_base":23449,"tarifa_vigente":25620,"catac":22229.54,"categoria":"Peligroso"},{"proveedor":"Daruma Agro SRL","producto":"EMAG","destino":"Lobos (BS)","km":354,"tarifa_base":41650,"tarifa_vigente":45507,"catac":61643.8,"categoria":"Peligroso"},{"proveedor":"El Tobiano","producto":"EMAG","destino":"Tortuguitas","km":308,"tarifa_base":36593,"tarifa_vigente":39982,"catac":55808.97,"categoria":"Peligroso"},{"proveedor":"Induagro","producto":"EMAG","destino":"Canada de Gomez","km":85,"tarifa_base":23449,"tarifa_vigente":25620,"catac":23139.04,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Sigma - Brandsen (BS)","km":427,"tarifa_base":47699,"tarifa_vigente":52116,"catac":70094.46,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Termochemical - Ezeiza (BA)","km":365,"tarifa_base":43965,"tarifa_vigente":48036,"catac":63053.38,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Stoller - (Cba)","km":420,"tarifa_base":49470,"tarifa_vigente":54051,"catac":69448.08,"categoria":"Peligroso"},{"proveedor":"Whor Quimica S.R.L","producto":"EMAG","destino":"Esperanza (SF)","km":175,"tarifa_base":27418,"tarifa_vigente":29957,"catac":36047.69,"categoria":"Peligroso"},{"proveedor":"Daruma Agro SRL","producto":"EMAG","destino":"Arrecifes (BA)","km":190,"tarifa_base":29715,"tarifa_vigente":32467,"catac":38209.43,"categoria":"Peligroso"},{"proveedor":"Serv Quim S.A.","producto":"EMAG","destino":"Las Varillas (Cba)","km":245,"tarifa_base":33150,"tarifa_vigente":36220,"catac":46140.74,"categoria":"Peligroso"},{"proveedor":"AKTIV S.R.L","producto":"EMAG","destino":"Rio Primero (Cba)","km":370,"tarifa_base":45900,"tarifa_vigente":50150,"catac":63718.56,"categoria":"Peligroso"},{"proveedor":"Molisoles S.A","producto":"EMAG","destino":"America (BA)","km":440,"tarifa_base":47699,"tarifa_vigente":52116,"catac":71297.01,"categoria":"Peligroso"},{"proveedor":"PAE","producto":"Biodiesel","destino":"Campana (BA)","km":280,"tarifa_base":32161,"tarifa_vigente":35139,"catac":51549.09,"categoria":"Peligroso"},{"proveedor":"AGM","producto":"EMAG","destino":"Pilar (BA)","km":334,"tarifa_base":36593,"tarifa_vigente":39982,"catac":59063.36,"categoria":"Peligroso"},{"proveedor":"Rainbow","producto":"EMAG","destino":"Gualeguaychu (ER)","km":260,"tarifa_base":32311,"tarifa_vigente":35303,"catac":48413.09,"categoria":"Peligroso"},{"proveedor":"Exolgan","producto":"Biodiesel","destino":"Dock Sur","km":340,"tarifa_base":40898,"tarifa_vigente":44685,"catac":59845.78,"categoria":"Peligroso"},{"proveedor":"Andreani Logistica SA","producto":"Biodiesel","destino":"Tigre (BA)","km":291,"tarifa_base":39467,"tarifa_vigente":43122,"catac":53305.51,"categoria":"Peligroso"},{"proveedor":"Pro Crop S. A.","producto":"EMAG","destino":"Sigma - Gral. Rodriguez (BA)","km":316,"tarifa_base":39467,"tarifa_vigente":43122,"catac":56810.47,"categoria":"Peligroso"},{"proveedor":"Laboratorio Peyte S.A.","producto":"EMAG","destino":"Venado Tuerto (SF)","km":210,"tarifa_base":30396,"tarifa_vigente":33211,"catac":41058.27,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TSL","producto":"Biodiesel","destino":"Terminal San Lorenzo (SF)","km":14,"tarifa_base":17146,"tarifa_vigente":18734,"catac":11049.19,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TPG","producto":"Biodiesel","destino":"Terminal Galvan (BA)","km":800,"tarifa_base":118392,"tarifa_vigente":129355,"catac":93893.18,"categoria":"Peligroso"},{"proveedor":"PAN AMERICAN ENERGY S.A. TC","producto":"Biodiesel","destino":"Terminal Campana (BA)","km":261,"tarifa_base":34072,"tarifa_vigente":37227,"catac":48548.47,"categoria":"Peligroso"}];
+
+// Tabla CATAC embebida (Ene 2026 proyectada)
+const CP={1:9236.42,5:9236.42,10:9236.42,11:9454.49,12:9677.28,13:9900.11,14:10127.73,15:10362.52,16:10602.14,17:10841.7,18:11090.91,19:11344.89,20:11601.22,21:11819.31,22:12039.68,23:12269.71,24:12497.32,25:12734.52,26:12978.9,27:13225.71,28:13479.68,29:13740.85,30:14009.19,35:14828.58,40:15676.75,45:16553.7,50:17466.56,55:18206.89,60:18964.01,65:19745.15,70:20547.76,75:21381.56,80:22241.68,85:23137.77,90:24069.81,95:25042.59,100:26063.28,110:27323.53,120:28598.2,130:29899.18,138:30953.42,140:31219.35,150:32563.54,160:33933.97,170:35333.25,175:36042.45,180:36758.83,190:38217.97,200:39705.89,210:41093.1,220:42504.33,230:43944.33,240:45405.88,242:45700.54,245:46148.64,250:46896.15,260:48417.56,261:48568.54,270:49965.34,280:51549.09,290:53168.79,291:53331.72,300:54826.77,308:55825.9,310:56075.06,316:56825.0,320:57328.13,334:59093.98,340:59858.29,350:61130.54,354:61645.69,360:62417.16,365:63059.32,370:63708.61,400:67628.38,420:69473.29,427:70115.39,440:71313.36,450:72231.04,500:76831.3,550:79646.52,600:82298.86,650:84802.64,700:87165.04,750:90622.41,800:93962.42,850:96480.56,900:98914.83,950:101262.87,1000:103534.27,1100:108855.68,1200:113707.51,1300:118132.88,1400:122167.67,1500:125716.09};
+
+// Ratios históricos (tarifa vigente / CATAC) — 23 rutas peligrosas de referencia
+const RATIOS=[{"r":"Solamb — RINP/HFFA","km":18,"vigente":8280,"catac":11075},{"r":"Induagro — EMAG","km":85,"vigente":25620,"catac":23139},{"r":"Whor Quimica — EMAG","km":175,"vigente":29957,"catac":36048},{"r":"Daruma Arrecifes — EMAG","km":190,"vigente":32467,"catac":38209},{"r":"Lab. Peyte — EMAG","km":210,"vigente":33211,"catac":41058},{"r":"Serv Quim — EMAG","km":245,"vigente":36220,"catac":46141},{"r":"Rainbow — EMAG","km":260,"vigente":35303,"catac":48413},{"r":"PAE TC — Biodiesel","km":261,"vigente":37227,"catac":48548},{"r":"PAE Campana — Biodiesel","km":280,"vigente":35139,"catac":51549},{"r":"Andreani — Biodiesel","km":291,"vigente":43122,"catac":53306},{"r":"El Tobiano — EMAG","km":308,"vigente":39982,"catac":55809},{"r":"Pro Crop GR — EMAG","km":316,"vigente":43122,"catac":56810},{"r":"ECOPOR — EMAG","km":320,"vigente":47669,"catac":57317},{"r":"AGM — EMAG","km":334,"vigente":39982,"catac":59063},{"r":"Exolgan — Biodiesel","km":340,"vigente":44685,"catac":59846},{"r":"Daruma Lobos — EMAG","km":354,"vigente":45507,"catac":61644},{"r":"Pro Crop Ezeiza — EMAG","km":365,"vigente":48036,"catac":63053},{"r":"AKTIV — EMAG","km":370,"vigente":50150,"catac":63719},{"r":"Pro Crop Stoller — EMAG","km":420,"vigente":54051,"catac":69448},{"r":"Pro Crop Brandsen — EMAG","km":427,"vigente":52116,"catac":70094},{"r":"Molisoles — EMAG","km":440,"vigente":52116,"catac":71297},{"r":"Alltec — EMAG","km":700,"vigente":82985,"catac":87165},{"r":"Lab San Pablo — EMAG","km":950,"vigente":104758,"catac":101290}];
+
+// ── ESTADO ────────────────────────────────────────────────
+let isAdmin = false;
+let pendingApproval = null;
+let chartRatioInst = null;
+let ratioInited = false;
+
+const DEFAULT_PW  = 'explora2026';
+let catacParsed = null;
+
+// ── FIRESTORE ─────────────────────────────────────────────
+// Todos los datos compartidos se guardan en Firestore.
+// Estructura: colección "portal" con documentos fijos:
+//   portal/mods       → {data: {...}}
+//   portal/pendientes → {data: [...]}
+//   portal/historial  → {data: [...]}
+//   portal/catac      → {data: {...}, ver: {...}}
+//   portal/config     → {adminPw: "..."}
+
+const db = firebase.firestore();
+const DOC_MODS       = db.collection('portal').doc('mods');
+const DOC_PENDIENTES = db.collection('portal').doc('pendientes');
+const DOC_HISTORIAL  = db.collection('portal').doc('historial');
+const DOC_CATAC      = db.collection('portal').doc('catac');
+const DOC_CONFIG     = db.collection('portal').doc('config');
+
+// Cache local para operaciones síncronas dentro de la sesión
+let _cache = { mods:{}, pendientes:[], historial:[], catac:null, catacVer:null, adminPw:null };
+let _cacheLoaded = false;
+
+// Carga inicial de todos los datos desde Firestore
+async function cargarDatosFirestore(){
+  try {
+    const [mDoc, pDoc, hDoc, cDoc, cfDoc] = await Promise.all([
+      DOC_MODS.get(), DOC_PENDIENTES.get(), DOC_HISTORIAL.get(),
+      DOC_CATAC.get(), DOC_CONFIG.get()
+    ]);
+    _cache.mods       = (mDoc.exists  && mDoc.data().data)  ? mDoc.data().data  : {};
+    _cache.pendientes = (pDoc.exists  && pDoc.data().data)  ? pDoc.data().data  : [];
+    _cache.historial  = (hDoc.exists  && hDoc.data().data)  ? hDoc.data().data  : [];
+    _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
+    _cache.catacVer   = (cDoc.exists  && cDoc.data().ver)   ? cDoc.data().ver   : null;
+    _cache.adminPw    = (cfDoc.exists && cfDoc.data().adminPw) ? cfDoc.data().adminPw : null;
+    _cacheLoaded = true;
+  } catch(e) {
+    console.error('Error cargando Firestore:', e);
+    _cacheLoaded = true;
+  }
+}
+
+// Escuchar cambios en tiempo real para mods (tarifas aprobadas)
+function iniciarListenerMods(){
+  DOC_MODS.onSnapshot(snap => {
+    if(snap.exists && snap.data().data){
+      _cache.mods = snap.data().data;
+      render();
+      renderAdminMods();
+    }
+  });
+  DOC_HISTORIAL.onSnapshot(snap => {
+    if(snap.exists && snap.data().data){
+      _cache.historial = snap.data().data;
+      renderHistorial();
+    }
+  });
+}
+
+// Funciones síncronas (leen del cache)
+function getAdminPw(){ return _cache.adminPw || DEFAULT_PW; }
+function getMods(){ return _cache.mods || {}; }
+function getPendientes(){ return _cache.pendientes || []; }
+function getHistorial(){ return _cache.historial || []; }
+
+// Funciones asíncronas (escriben en Firestore y actualizan cache)
+async function saveMods(o){
+  _cache.mods = o;
+  await DOC_MODS.set({data: o});
+}
+async function savePendientes(p){
+  _cache.pendientes = p;
+  await DOC_PENDIENTES.set({data: p});
+}
+async function saveHistorial(h){
+  _cache.historial = h;
+  await DOC_HISTORIAL.set({data: h});
+}
+async function saveAdminPw(pw){
+  _cache.adminPw = pw;
+  await DOC_CONFIG.set({adminPw: pw}, {merge: true});
+}
+
+// Tarifa vigente efectiva (con modificaciones aplicadas)
+function getTarifaVigente(idx){
+  const mods = getMods();
+  return mods[idx] !== undefined ? mods[idx] : T[idx].tarifa_vigente;
+}
+
+// ── CATAC ─────────────────────────────────────────────────
+function getCatacActivo(){
+  return _cache.catac || null;
+}
+function getCatacTabla(tabla, km){
+  km=Math.round(km);
+  if(tabla[km]) return tabla[km];
+  const ks=Object.keys(tabla).map(Number).sort((a,b)=>a-b);
+  const lo=ks.filter(k=>k<=km).pop(), hi=ks.filter(k=>k>=km).shift();
+  if(!lo) return tabla[hi]; if(!hi) return tabla[lo];
+  return tabla[lo]+(tabla[hi]-tabla[lo])*(km-lo)/(hi-lo);
+}
+function getCatac(km){ return getCatacTabla(getCatacActivo()||CP, km); }
+function getRatioLineal(km){ return Math.max(0.65, Math.min(1.1, 0.745+0.000161*km)); }
+
+// ── FORMATO ───────────────────────────────────────────────
+function fmt(n){ return '$'+Math.round(n).toLocaleString('es-AR'); }
+function fp(n){ return (n>=0?'+':'')+n.toFixed(1)+'%'; }
+
+// ── TAG REF ───────────────────────────────────────────────
+function tagRef(ref){
+  const m={'CATAMP':'tag-catamp','CATAC':'tag-catac'};
+  return `<span class="${m[ref]||'tag-otro'}">${ref}</span>`;
+}
+
+// ── PERFIL ────────────────────────────────────────────────
+function openLogin(){
+  if(isAdmin){ document.getElementById('modal-logout').classList.add('open'); }
+  else {
+    document.getElementById('login-pw').value='';
+    document.getElementById('login-err').textContent='';
+    document.getElementById('modal-login').classList.add('open');
+    setTimeout(()=>document.getElementById('login-pw').focus(),100);
+  }
+}
+function doLogin(){
+  if(document.getElementById('login-pw').value === getAdminPw()){
+    isAdmin=true;
+    document.getElementById('modal-login').classList.remove('open');
+    updateProfileUI();
+  } else {
+    document.getElementById('login-err').textContent='Clave incorrecta.';
+  }
+}
+function doLogout(){
+  isAdmin=false;
+  closeModal('modal-logout');
+  updateProfileUI();
+  if(document.getElementById('pa').classList.contains('active')) sw('c');
+}
+function updateProfileUI(){
+  document.getElementById('profile-dot').className='profile-dot '+(isAdmin?'dot-admin':'dot-user');
+  document.getElementById('profile-label').textContent=isAdmin?'Admin':'Usuario';
+  document.getElementById('tab-admin').style.display=isAdmin?'block':'none';
+  document.getElementById('tab-editor').style.display=isAdmin?'block':'none';
+  const btnsPdf=document.getElementById('btns-pdf-consulta');
+  if(btnsPdf) btnsPdf.style.display=isAdmin?'flex':'none';
+  const adminFields=document.getElementById('admin-fields');
+  if(adminFields) adminFields.style.display=isAdmin?'block':'none';
+  renderAdminMods();
+  calc();
+}
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+
+// ── CLAVE ─────────────────────────────────────────────────
+function cambiarClave(){
+  const old=document.getElementById('old-pw').value;
+  const nw=document.getElementById('new-pw').value;
+  const cf=document.getElementById('conf-pw').value;
+  const msg=document.getElementById('pw-msg');
+  if(old!==getAdminPw()){ msg.style.color='#8b1f1f'; msg.textContent='Clave actual incorrecta.'; return; }
+  if(nw.length<6){ msg.style.color='#8b1f1f'; msg.textContent='La nueva clave debe tener al menos 6 caracteres.'; return; }
+  if(nw!==cf){ msg.style.color='#8b1f1f'; msg.textContent='Las claves no coinciden.'; return; }
+  saveAdminPw(nw).then(()=>{
+    msg.style.color='#166534'; msg.textContent='Clave actualizada correctamente.';
+    document.getElementById('old-pw').value=''; document.getElementById('new-pw').value=''; document.getElementById('conf-pw').value='';
+  });
+}
+
+// ── CONSULTA ──────────────────────────────────────────────
+const sp=document.getElementById('fp');
+[...new Set(T.map(t=>t.producto))].sort().forEach(p=>{
+  const o=document.createElement('option'); o.value=p; o.textContent=p; sp.appendChild(o);
+});
+
+function getAllRows(){
+  return T.map((t,i)=>({...t, tarifa_vigente: getTarifaVigente(i), modificada: getMods()[i]!==undefined}));
+}
+function getFilt(){
+  const q=document.getElementById('q').value.toLowerCase();
+  const cat=document.getElementById('fc').value;
+  const prod=document.getElementById('fp').value;
+  return getAllRows().filter(t=>{
+    const mq=!q||t.proveedor.toLowerCase().includes(q)||t.destino.toLowerCase().includes(q)||(t.producto||'').toLowerCase().includes(q);
+    const mc=!cat||t.categoria===cat;
+    const mp=!prod||t.producto===prod;
+    return mq&&mc&&mp;
+  });
+}
+function render(){
+  const d=getFilt();
+  document.getElementById('st').innerHTML=`<div class="stat"><div class="stat-l">Resultados</div><div class="stat-v">${d.length}</div></div><div class="stat"><div class="stat-l">General</div><div class="stat-v">${d.filter(t=>t.categoria==='General').length}</div></div><div class="stat"><div class="stat-l">Peligroso</div><div class="stat-v">${d.filter(t=>t.categoria==='Peligroso').length}</div></div>`;
+  const tb=document.getElementById('tb');
+  if(!d.length){tb.innerHTML='<tr><td colspan="10" class="no-res">Sin resultados</td></tr>';return;}
+  const chkAll=document.getElementById('chk-consulta-all');
+  if(chkAll) chkAll.checked=false;
+  tb.innerHTML=d.map((t,i)=>{
+    const b=(t.tarifa_vigente-t.catac)/t.catac*100, bc=b>10?'dan':b>0?'warn':'ok';
+    const estado=t.modificada?'<span class="bdg bdg-mod">Modificada</span>':'<span class="bdg" style="background:var(--sur2);color:var(--tx3)">Base</span>';
+    return`<tr class="${t.modificada?'row-mod':''}"><td><input type="checkbox" class="chk-consulta" data-i="${i}" style="cursor:pointer"></td><td>${t.proveedor}</td><td>${t.producto}</td><td>${t.destino}</td><td class="r mono">${t.km}</td><td><span class="bdg ${t.categoria==='Peligroso'?'bp':'bg2'}">${t.categoria}</span></td><td class="r mono" style="font-weight:600">${fmt(t.tarifa_vigente)}</td><td class="r mono" style="color:var(--tx2)">${fmt(t.catac)}</td><td class="r ${bc}">${fp(b)}</td><td>${estado}</td></tr>`;
+  }).join('');
+}
+function limpiar(){
+  document.getElementById('q').value='';
+  document.getElementById('fc').value='';
+  document.getElementById('fp').value='';
+  render();
+}
+
+// ── GENERADOR ─────────────────────────────────────────────
+function calc(){
+  const kmEl=document.getElementById('gkm');
+  const el=document.getElementById('gres');
+  const segInfo=document.getElementById('seg-info');
+  const km=kmEl?parseFloat(kmEl.value):NaN;
+  const prodEl=document.getElementById('gprod');
+  const prod=prodEl?prodEl.value:'';
+  const EMPTY='<div class="res-empty"><svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Completá km y producto para calcular</span></div>';
+  if(!km||km<1||km>1500||!prod){ el.innerHTML=EMPTY; if(segInfo) segInfo.style.display='none'; return; }
+
+  const clienteEl=document.getElementById('gcliente');
+  const destinoEl=document.getElementById('gdestino');
+  const cliente=(clienteEl&&isAdmin)?clienteEl.value.trim():'';
+  const destino=destinoEl?destinoEl.value.trim():'';
+  const catacBase=getCatac(km);
+
+  // Vecino más cercano
+  const vecinoRef=T.map((t,i)=>({km:t.km,vigente:getTarifaVigente(i),catac:t.catac,producto:t.producto,proveedor:t.proveedor}))
+    .reduce((a,b)=>Math.abs(b.km-km)<Math.abs(a.km-km)?b:a);
+  const ratioUsado=vecinoRef.vigente/vecinoRef.catac;
+  const tarifaSugerida=catacBase*ratioUsado;
+
+  if(segInfo){
+    segInfo.style.display='block';
+    const prodDifiere=vecinoRef.producto.toLowerCase().replace(/[^a-z0-9]/g,'')!==prod.toLowerCase().replace(/[^a-z0-9]/g,'')&&prod!=='Otro';
+    segInfo.style.background=prodDifiere?'#fff7ed':'var(--acl)';
+    segInfo.style.color=prodDifiere?'#92400e':'#2a5a3a';
+    document.getElementById('seg-txt').innerHTML='Referencia: <strong>'+vecinoRef.proveedor+'</strong> ('+vecinoRef.km+' km) · ratio '+ratioUsado.toFixed(3)+(prodDifiere?' <span style="margin-left:6px;background:#fde68a;color:#78350f;padding:1px 6px;border-radius:10px;font-size:10px;font-weight:700">⚠ Producto distinto — verificar</span>':'');
+  }
+
+  const bVsCatac=(tarifaSugerida-catacBase)/catacBase*100;
+  const sim=T.filter(t=>Math.abs(t.km-km)<=100).sort((a,b)=>Math.abs(a.km-km)-Math.abs(b.km-km)).slice(0,6);
+  const simRows=sim.map((s,i)=>{
+    const vi=getTarifaVigente(T.indexOf(s));
+    return`<tr style="${i===0?'background:var(--sur2)':''}"><td>${s.proveedor}${i===0?' <span style="font-size:9px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.04em">referencia</span>':''}</td><td>${s.destino}</td><td class="r">${s.km}</td><td class="r" style="font-weight:600">${fmt(vi)}</td><td class="r" style="color:var(--tx2)">${fmt(s.catac)}</td></tr>`;
+  }).join('');
+
+  pendingApproval={
+    proveedor:cliente||'Sin especificar',
+    producto:prod,
+    destino:destino||'Sin especificar',
+    km:Math.round(km),
+    tarifa_vigente:Math.round(tarifaSugerida*100)/100,
+    catac:Math.round(catacBase*100)/100,
+    categoria:prod,
+    fecha:new Date().toLocaleDateString('es-AR')
+  };
+
+  const infoBar=isAdmin
+    ?'<div class="approve-bar"><div class="approve-bar-info"><strong>'+(cliente||'Cliente')+'</strong> · '+(destino||'Destino')+' · '+Math.round(km)+' km · '+prod+'<br>Tarifa sugerida: <strong>'+fmt(tarifaSugerida)+'</strong></div><div style="display:flex;gap:8px"><button class="btn btn-approve" onclick="abrirAprobacion()">Aprobar y pasar a vigente</button><button class="btn" style="background:#2a5a7a;color:#fff;border:none" onclick="exportarPDF()">⬇ Exportar PDF</button></div></div>'
+    :'<div class="info-bar" style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span>Resultado informativo. Solo el administrador puede aprobar y pasar a vigente.</span><button class="btn" style="background:#2a5a7a;color:#fff;border:none;white-space:nowrap" onclick="exportarPDF()">⬇ Exportar PDF</button></div>';
+
+  el.innerHTML='<div class="ri rac" style="margin-bottom:14px"><div class="rl2">Tarifa sugerida'+(isAdmin?'':' · modo informativo')+'</div><div class="rv" style="font-size:30px">'+fmt(tarifaSugerida)+'</div><div class="rs">'+Math.round(km)+' km · '+prod+' · brecha vs CATAC: '+fp(bVsCatac)+'</div></div>'
+    +(sim.length?'<hr class="dv"><div class="siml">Rutas similares (±100 km)</div><table class="ct"><thead><tr><th>Cliente</th><th>Destino</th><th class="r">km</th><th class="r">Tarifa vigente</th><th class="r">CATAC ref.</th></tr></thead><tbody>'+simRows+'</tbody></table>':'')
+    +infoBar;
+}
+
+// ── APROBACIÓN (generador) ────────────────────────────────
+function abrirAprobacion(){
+  if(!pendingApproval) return;
+  document.getElementById('aprobar-pw').value='';
+  document.getElementById('aprobar-err').textContent='';
+  document.getElementById('aprobar-desc').textContent=`${pendingApproval.proveedor} · ${pendingApproval.destino} · ${pendingApproval.km} km → Tarifa: ${fmt(pendingApproval.tarifa_vigente)}`;
+  document.getElementById('modal-aprobar').classList.add('open');
+  setTimeout(()=>document.getElementById('aprobar-pw').focus(),100);
+}
+async function confirmarAprobacion(){
+  const pw=document.getElementById('aprobar-pw').value;
+  if(pw!==getAdminPw()){ document.getElementById('aprobar-err').textContent='Clave incorrecta.'; return; }
+  const mods=getMods();
+  const hist=getHistorial();
+  const idx=T.findIndex(t=>t.destino===pendingApproval.destino&&t.proveedor===pendingApproval.proveedor);
+  if(idx>=0){
+    // Ruta existente: actualizar override
+    const anterior=getTarifaVigente(idx);
+    mods[idx]=pendingApproval.tarifa_vigente;
+    hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:anterior,tarifaNueva:pendingApproval.tarifa_vigente,variacion:parseFloat(((pendingApproval.tarifa_vigente/anterior-1)*100).toFixed(2)),just:'Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
+  } else {
+    // Ruta nueva: guardar con clave string única
+    const claveNueva='new_'+Date.now();
+    mods[claveNueva]=pendingApproval.tarifa_vigente;
+    // Agregar al array T en memoria para que aparezca en consulta
+    T.push({proveedor:pendingApproval.proveedor,producto:pendingApproval.producto,destino:pendingApproval.destino,km:pendingApproval.km,tarifa_base:null,tarifa_vigente:pendingApproval.tarifa_vigente,catac:pendingApproval.catac,categoria:pendingApproval.categoria});
+    const nuevoIdx=T.length-1;
+    mods[nuevoIdx]=pendingApproval.tarifa_vigente;
+    delete mods[claveNueva];
+    hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:0,tarifaNueva:pendingApproval.tarifa_vigente,variacion:100,just:'Nueva ruta — Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
+  }
+  await saveMods(mods);
+  await saveHistorial(hist);
+  closeModal('modal-aprobar');
+  render(); renderAdminMods(); calc();
+  alert('Tarifa aprobada y pasada a vigente.');
+}
+
+// ── ADMIN PANEL ───────────────────────────────────────────
+function renderAdminMods(){
+  const mods=getMods();
+  const indices=Object.keys(mods);
+  document.getElementById('aprobadas-count').textContent=`(${indices.length} registros)`;
+  const el=document.getElementById('aprobadas-list');
+  if(!indices.length){ el.innerHTML='<div style="color:var(--tx3);font-size:13px;padding:12px 0">No hay tarifas modificadas guardadas.</div>'; return; }
+  const chkAll=`<input type="checkbox" id="chk-all" title="Seleccionar todas" onchange="document.querySelectorAll('.chk-mod').forEach(c=>c.checked=this.checked)" style="cursor:pointer">`;
+  const rows=indices.map((idx,i)=>{
+    const t=T[idx]; const tv=mods[idx];
+    return`<tr><td><input type="checkbox" class="chk-mod" data-i="${i}" style="cursor:pointer"></td><td>${t.proveedor}</td><td>${t.destino}</td><td class="r">${t.km}</td><td>${t.producto}</td><td class="r mono" style="font-weight:600">${fmt(tv)}</td><td><button class="btn" style="height:26px;font-size:11px;padding:0 8px" onclick="borrarMod(${idx})">Quitar</button></td></tr>`;
+  }).join('');
+  el.innerHTML=`<div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>${chkAll}</th><th>Cliente</th><th>Destino</th><th class="r">km</th><th>Producto</th><th class="r">Tarifa vigente</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+async function borrarMod(idx){
+  if(!confirm('¿Quitar esta modificación?')) return;
+  const mods=getMods(); delete mods[idx]; await saveMods(mods); renderAdminMods(); render();
+}
+async function confirmarBorrarTodas(){
+  if(!confirm('¿Borrar TODAS las modificaciones? Las tarifas volverán a la base (Mar 2026 × 1.0926).')) return;
+  await saveMods({}); renderAdminMods(); render();
+}
+function exportarAprobadas(){
+  const mods=getMods(); const indices=Object.keys(mods);
+  if(!indices.length){ alert('No hay modificaciones para exportar.'); return; }
+  const header='Cliente,Destino,km,Producto,Categoría,Tarifa vigente\n';
+  const rows=indices.map(i=>{const t=T[i];return`"${t.proveedor}","${t.destino}",${t.km},"${t.producto}","${t.categoria}",${mods[i]}`;}).join('\n');
+  const blob=new Blob([header+rows],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='tarifas_modificadas_explora.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── ACTUALIZAR CATAC ──────────────────────────────────────
+function parsearCatac(){
+  const txt=document.getElementById('catac-txt').value;
+  const desc=document.getElementById('catac-desc').value.trim();
+  const msg=document.getElementById('catac-parse-msg');
+  const prev=document.getElementById('catac-preview');
+  const btn=document.getElementById('catac-confirm-btn');
+  if(!txt.trim()){ msg.style.color='var(--dan)'; msg.textContent='Pegá el texto del PDF primero.'; return; }
+  if(!desc){ msg.style.color='var(--dan)'; msg.textContent='Ingresá una descripción de la versión.'; return; }
+  const raw=txt.replace(/\n/g,' ').replace(/\t/g,' ');
+  const pares=raw.match(/\b(\d{1,4})\s+([\d]{1,3}(?:\.\d{3})*,\d{2})\b/g)||[];
+  const resultado={};
+  pares.forEach(par=>{
+    const m=par.match(/^(\d{1,4})\s+([\d\.]+,\d{2})$/);
+    if(!m) return;
+    const km=parseInt(m[1]); if(km<1||km>1500) return;
+    const val=parseFloat(m[2].replace(/\./g,'').replace(',','.'));
+    if(val>1000&&val<300000) resultado[km]=val;
+  });
+  const total=Object.keys(resultado).length;
+  if(total<100){ msg.style.color='var(--dan)'; msg.textContent=`Solo se detectaron ${total} valores. Verificá el texto.`; btn.style.display='none'; prev.style.display='none'; return; }
+  const checks=[1,100,280,500,700,1000,1500];
+  const validaciones=checks.map(k=>{const v=resultado[k]; return v?`km ${k}: ${fmt(v)} ✓`:`km ${k}: no encontrado ⚠`;}).join(' · ');
+  catacParsed={datos:resultado,desc,fecha:new Date().toLocaleDateString('es-AR'),total};
+  prev.style.display='block';
+  prev.innerHTML=`<strong>${total} valores detectados</strong> (rango km 1–1500)<br>${validaciones}`;
+  msg.style.color='#166534'; msg.textContent=`${total} pares km/valor listos para activar.`;
+  btn.style.display='inline-block';
+}
+async function confirmarCatac(){
+  if(!catacParsed){ alert('Primero validá la tabla.'); return; }
+  if(!confirm(`¿Activar la tabla "${catacParsed.desc}" con ${catacParsed.total} valores?`)) return;
+  _cache.catac = catacParsed.datos;
+  _cache.catacVer = {desc:catacParsed.desc,fecha:catacParsed.fecha,total:catacParsed.total};
+  await DOC_CATAC.set({datos:catacParsed.datos, ver:_cache.catacVer});
+  const hist=getHistorial();
+  hist.unshift({proveedor:'— Sistema —',destino:'Tabla CATAC completa',km:'—',categoria:'—',tarifaAnterior:0,tarifaNueva:0,variacion:0,just:`Tabla actualizada: ${catacParsed.desc} (${catacParsed.total} valores)`,ref:'CATAC',fecha:catacParsed.fecha});
+  await saveHistorial(hist);
+  document.getElementById('catac-txt').value='';
+  document.getElementById('catac-desc').value='';
+  document.getElementById('catac-preview').style.display='none';
+  document.getElementById('catac-confirm-btn').style.display='none';
+  document.getElementById('catac-parse-msg').textContent='';
+  catacParsed=null;
+  actualizarVersionCatac(); renderHistorial(); render();
+  alert('Tabla CATAC activada correctamente.');
+}
+function actualizarVersionCatac(){
+  try{
+    const ver=JSON.parse(localStorage.getItem(LS_CATAC_VER)||'null');
+    const el=document.getElementById('catac-version');
+    if(el) el.textContent=ver?`Activa: ${ver.desc} · ${ver.fecha}`:'Usando tabla embebida (CATAC Ene-2026 proy.)';
+  }catch(e){}
+}
+
+// ── EDITOR ────────────────────────────────────────────────
+function previewGlobal(){
+  const pct=parseFloat(document.getElementById('ed-pct').value);
+  const scope=document.getElementById('ed-scope').value;
+  const just=document.getElementById('ed-just').value.trim();
+  const ref=document.getElementById('ed-ref').value;
+  const prev=document.getElementById('ed-preview');
+  const btn=document.getElementById('ed-confirm-btn');
+  if(!pct||!just){ prev.style.display='block'; prev.textContent='Completá el porcentaje y la justificación.'; btn.style.display='none'; return; }
+  const factor=1+pct/100;
+  const afectadas=T.filter((_,i)=>scope==='all'||T[i].categoria===scope);
+  const total=afectadas.length;
+  const ejIdx=T.findIndex((_,i)=>scope==='all'||T[i].categoria===scope);
+  const ej=ejIdx>=0?T[ejIdx]:T[0];
+  const ejActual=getTarifaVigente(ejIdx>=0?ejIdx:0);
+  const ejNueva=Math.round(ejActual*factor);
+  prev.style.display='block';
+  prev.innerHTML=`<strong>${total} rutas</strong> ${scope==='all'?'(toda la cartera)':scope} · Factor: ×${factor.toFixed(4)} · ${tagRef(ref)}<br>Ejemplo: ${ej.proveedor} ${fmt(ejActual)} → <strong>${fmt(ejNueva)}</strong> (${pct>=0?'+':''}${pct.toFixed(2)}%)`;
+  btn.style.display='block';
+}
+async function confirmarGlobal(){
+  const pct=parseFloat(document.getElementById('ed-pct').value);
+  const scope=document.getElementById('ed-scope').value;
+  const just=document.getElementById('ed-just').value.trim();
+  const ref=document.getElementById('ed-ref').value;
+  if(!pct||!just){ alert('Completá todos los campos.'); return; }
+  const factor=1+pct/100;
+  const fecha=new Date().toLocaleDateString('es-AR');
+  const pendientes=getPendientes();
+  T.forEach((t,i)=>{
+    if(scope!=='all'&&t.categoria!==scope) return;
+    const actual=getTarifaVigente(i);
+    const nueva=Math.round(actual*factor*100)/100;
+    const existe=pendientes.findIndex(p=>p.idx===i);
+    const entry={idx:i,proveedor:t.proveedor,destino:t.destino,km:t.km,categoria:t.categoria,tarifaAnterior:actual,tarifaNueva:nueva,variacion:pct,just,ref,fecha};
+    if(existe>=0) pendientes[existe]=entry; else pendientes.push(entry);
+  });
+  await savePendientes(pendientes);
+  document.getElementById('ed-preview').style.display='none';
+  document.getElementById('ed-confirm-btn').style.display='none';
+  document.getElementById('ed-pct').value='';
+  document.getElementById('ed-just').value='';
+  renderEditorTabla();
+  alert(`${pendientes.length} rutas en estado pendiente. Revisá y aprobá desde la tabla.`);
+}
+function renderEditorTabla(){
+  const q=(document.getElementById('ed-search')||{value:''}).value.toLowerCase();
+  const pendientes=getPendientes();
+  const tb=document.getElementById('editor-tb');
+  const pCount=document.getElementById('pendientes-count');
+  const btnAprobar=document.getElementById('btn-aprobar-editor');
+  if(pendientes.length>0){
+    pCount.style.display='inline'; pCount.textContent=`${pendientes.length} cambios pendientes`;
+    btnAprobar.style.display='inline-block';
+  } else { pCount.style.display='none'; btnAprobar.style.display='none'; }
+  const filas=T.map((t,i)=>{
+    if(q&&!t.proveedor.toLowerCase().includes(q)&&!t.destino.toLowerCase().includes(q)) return '';
+    const actual=getTarifaVigente(i);
+    const pend=pendientes.find(p=>p.idx===i);
+    const nueva=pend?pend.tarifaNueva:actual;
+    const varpct=pend?((pend.tarifaNueva-actual)/actual*100):0;
+    const estado=pend?`<span class="bdg" style="background:#fef9c3;color:#713f12">Pendiente</span>`:`<span style="font-size:10px;color:var(--tx3)">Vigente</span>`;
+    return`<tr>
+      <td style="font-size:12px">${t.proveedor}</td>
+      <td style="font-size:12px">${t.destino}</td>
+      <td class="r mono">${t.km}</td>
+      <td><span class="bdg ${t.categoria==='Peligroso'?'bp':'bg2'}">${t.categoria}</span></td>
+      <td class="r mono">${fmt(actual)}</td>
+      <td class="r"><input type="number" value="${nueva}" data-idx="${i}" data-actual="${actual}" style="width:110px;height:28px;padding:0 6px;border:1px solid var(--brd);border-radius:var(--r);font-family:var(--mono);font-size:12px;text-align:right${pend?';background:#fef9c3;border-color:#fde047':''}" onchange="editarIndividual(this)"></td>
+      <td class="r ${varpct>0?'dan':varpct<0?'ok':''}">${pend?(varpct>=0?'+':'')+varpct.toFixed(2)+'%':'—'}</td>
+      <td>${estado}</td>
+      <td style="white-space:nowrap">
+        <button class="btn" style="height:26px;font-size:11px;padding:0 8px;margin-right:4px" onclick="abrirEditorLinea(${i})">✏ Editar</button>
+        <button class="btn btn-danger" style="height:26px;font-size:11px;padding:0 8px" onclick="eliminarLinea(${i})">✕</button>
+      </td>
+    </tr>`;
+  }).join('');
+  tb.innerHTML=filas||'<tr><td colspan="8" class="no-res">Sin resultados</td></tr>';
+}
+async function editarIndividual(input){
+  const idx=parseInt(input.dataset.idx);
+  const actual=parseFloat(input.dataset.actual);
+  const nueva=parseFloat(input.value);
+  const just=document.getElementById('ed-just-ind').value.trim();
+  if(!just){ alert('Ingresá una justificación para el cambio individual.'); input.value=actual; return; }
+  if(isNaN(nueva)||nueva<=0){ input.value=actual; return; }
+  const t=T[idx];
+  const varpct=((nueva-actual)/actual*100);
+  const pendientes=getPendientes();
+  const existe=pendientes.findIndex(p=>p.idx===idx);
+  const entry={idx,proveedor:t.proveedor,destino:t.destino,km:t.km,categoria:t.categoria,tarifaAnterior:actual,tarifaNueva:nueva,variacion:parseFloat(varpct.toFixed(2)),just,ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')};
+  if(existe>=0) pendientes[existe]=entry; else pendientes.push(entry);
+  savePendientes(pendientes);
+  renderEditorTabla();
+}
+async function aprobarPendientes(){
+  const pendientes=getPendientes();
+  if(!pendientes.length){ alert('No hay cambios pendientes.'); return; }
+  const mods=getMods(); const hist=getHistorial();
+  pendientes.forEach(p=>{ mods[p.idx]=p.tarifaNueva; hist.unshift(p); });
+  await saveMods(mods); await saveHistorial(hist); await savePendientes([]);
+  renderEditorTabla(); renderHistorial(); render();
+  alert(`${pendientes.length} tarifas actualizadas y registradas en el historial.`);
+}
+async function descartarPendientes(){
+  if(!getPendientes().length){ alert('No hay cambios pendientes.'); return; }
+  if(!confirm('¿Descartar todos los cambios pendientes?')) return;
+  await savePendientes([]); renderEditorTabla();
+}
+function revertirOverrides(){
+  const mods=getMods();
+  const cant=Object.keys(mods).length;
+  if(!cant){ alert('No hay modificaciones aplicadas. El tarifario ya está en su estado base.'); return; }
+  if(!confirm(`¿Revertir los ${cant} cambios y volver a la base (Mar 2026 × 1.0926)?\n\nEl historial se conserva.`)) return;
+  saveMods({}).then(()=>savePendientes([])).then(()=>{
+    renderEditorTabla(); renderHistorial(); render();
+    alert('Tarifas revertidas a la base Mar 2026.');
+  });
+}
+
+// ── EDITAR / ELIMINAR LÍNEA ──────────────────────────────
+const LS_ELIMINADAS = 'explora_eliminadas';
+function getEliminadas(){ try{ return JSON.parse(localStorage.getItem(LS_ELIMINADAS)||'[]'); }catch(e){ return []; } }
+function saveEliminadas(e){ localStorage.setItem(LS_ELIMINADAS, JSON.stringify(e)); }
+
+function abrirEditorLinea(idx){
+  const t = T[idx];
+  document.getElementById('el-idx').value = idx;
+  document.getElementById('el-proveedor').value = t.proveedor;
+  document.getElementById('el-producto').value = t.producto;
+  document.getElementById('el-destino').value = t.destino;
+  document.getElementById('el-km').value = t.km;
+  document.getElementById('el-categoria').value = t.categoria;
+  document.getElementById('el-err').textContent = '';
+  document.getElementById('modal-editar-linea').classList.add('open');
+  setTimeout(()=>document.getElementById('el-proveedor').focus(), 100);
+}
+
+async function confirmarEditorLinea(){
+  const idx = parseInt(document.getElementById('el-idx').value);
+  const proveedor = document.getElementById('el-proveedor').value.trim();
+  const producto = document.getElementById('el-producto').value;
+  const destino = document.getElementById('el-destino').value.trim();
+  const km = parseInt(document.getElementById('el-km').value);
+  const categoria = document.getElementById('el-categoria').value;
+  const errEl = document.getElementById('el-err');
+
+  if(!proveedor || !destino || !km){
+    errEl.textContent = 'Completá todos los campos obligatorios.'; return;
+  }
+
+  const t = T[idx];
+  const cambios = [];
+  if(t.proveedor !== proveedor) cambios.push(`Proveedor: "${t.proveedor}" → "${proveedor}"`);
+  if(t.producto !== producto) cambios.push(`Producto: "${t.producto}" → "${producto}"`);
+  if(t.destino !== destino) cambios.push(`Destino: "${t.destino}" → "${destino}"`);
+  if(t.km !== km) cambios.push(`km: ${t.km} → ${km}`);
+  if(t.categoria !== categoria) cambios.push(`Categoría: "${t.categoria}" → "${categoria}"`);
+
+  if(!cambios.length){ closeModal('modal-editar-linea'); return; }
+
+  // Aplicar cambios en T
+  T[idx] = {...T[idx], proveedor, producto, destino, km, categoria};
+
+  // Registrar en historial
+  const hist = getHistorial();
+  hist.unshift({
+    proveedor, destino, km, categoria,
+    tarifaAnterior: getTarifaVigente(idx),
+    tarifaNueva: getTarifaVigente(idx),
+    variacion: 0,
+    just: 'Edición de línea: ' + cambios.join(' · '),
+    ref: 'Otro',
+    fecha: new Date().toLocaleDateString('es-AR')
+  });
+  await saveHistorial(hist);
+
+  closeModal('modal-editar-linea');
+  renderEditorTabla();
+  render();
+  renderHistorial();
+}
+
+async function eliminarLinea(idx){
+  const t = T[idx];
+  if(!confirm(`¿Eliminar la línea "${t.proveedor} — ${t.destino}"?
+
+Esta acción no se puede deshacer.`)) return;
+
+  // Registrar en historial antes de eliminar
+  const hist = getHistorial();
+  hist.unshift({
+    proveedor: t.proveedor, destino: t.destino, km: t.km, categoria: t.categoria,
+    tarifaAnterior: getTarifaVigente(idx), tarifaNueva: 0,
+    variacion: -100,
+    just: 'Línea eliminada del tarifario',
+    ref: 'Otro',
+    fecha: new Date().toLocaleDateString('es-AR')
+  });
+  await saveHistorial(hist);
+
+  // Guardar índice eliminado para persistencia
+  const elim = getEliminadas();
+  elim.push(idx);
+  saveEliminadas(elim);
+
+  // Eliminar de T y limpiar mods/pendientes asociados
+  T.splice(idx, 1);
+  const mods = getMods();
+  delete mods[idx];
+  await saveMods(mods);
+  const pend = getPendientes().filter(p=>p.idx !== idx);
+  await savePendientes(pend);
+
+  renderEditorTabla();
+  render();
+  renderHistorial();
+}
+
+// ── VALIDADOR ────────────────────────────────────────────
+function calcValidador(){
+  const v1 = parseFloat(document.getElementById('val-idx1').value);
+  const v2 = parseFloat(document.getElementById('val-idx2').value) || 0;
+  const umbral = parseFloat(document.getElementById('val-umbral').value) || 15;
+
+  if(!v1){ document.getElementById('val-resultado').style.display='none'; return; }
+
+  // Factor compuesto multiplicativo
+  const factor = (1 + v1/100) * (1 + v2/100);
+  const pctTotal = (factor - 1) * 100;
+
+  document.getElementById('val-resultado').style.display='block';
+
+  // Resumen
+  const resEl = document.getElementById('val-resumen');
+  const f2 = v2 ? `× (1 + ${v2.toFixed(2)}%) = ` : '';
+  resEl.innerHTML = `
+    <div class="stat"><div class="stat-l">Factor compuesto</div><div class="stat-v mono">×${factor.toFixed(4)}</div></div>
+    <div class="stat"><div class="stat-l">Variación total</div><div class="stat-v mono" style="color:${pctTotal>umbral?'var(--dan)':'#166534'}">${pctTotal>=0?'+':''}${pctTotal.toFixed(2)}%</div></div>
+    <div class="stat" style="flex:1"><div class="stat-l">Cálculo</div><div style="font-size:12px;font-family:var(--mono);padding-top:4px">(1 + ${v1.toFixed(2)}%) ${f2}×${factor.toFixed(4)}</div></div>`;
+
+  // Alerta
+  const alertEl = document.getElementById('val-alerta');
+  if(pctTotal > umbral){
+    alertEl.style.display='block';
+    alertEl.textContent = `⚠ El ajuste resultante es +${pctTotal.toFixed(2)}%, que supera el umbral de alerta de ${umbral}%. Verificá los índices antes de continuar.`;
+  } else {
+    alertEl.style.display='none';
+  }
+
+  // Muestra representativa: ordenar por km, tomar min, max y 3 intermedias
+  const todas = T.map((t,i)=>({...t, vigente: getTarifaVigente(i)}))
+    .sort((a,b)=>a.vigente-b.vigente);
+  const n = todas.length;
+  const indices = [0, Math.floor(n*0.25), Math.floor(n*0.5), Math.floor(n*0.75), n-1];
+  const muestra = [...new Set(indices)].map(i=>todas[i]);
+
+  const tb = document.getElementById('val-tb');
+  tb.innerHTML = muestra.map(t=>{
+    const resultado = Math.round(t.vigente * factor);
+    const diff = resultado - t.vigente;
+    return `<tr>
+      <td style="font-size:12px">${t.proveedor}</td>
+      <td style="font-size:12px">${t.destino}</td>
+      <td class="r mono">${t.km}</td>
+      <td><span class="bdg ${t.categoria==='Peligroso'?'bp':'bg2'}">${t.categoria}</span></td>
+      <td class="r mono">${fmt(t.vigente)}</td>
+      <td class="r mono" style="font-weight:600;color:${pctTotal>umbral?'var(--dan)':'#166534'}">${fmt(resultado)}</td>
+      <td class="r mono" style="color:var(--tx2)">+${fmt(diff).replace('$','')}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── HISTORIAL ─────────────────────────────────────────────
+function renderHistorial(){
+  const hist=getHistorial();
+  const el=document.getElementById('historial-wrap');
+  if(!hist.length){ el.innerHTML='<div style="color:var(--tx3);font-size:13px;padding:12px 0">Sin cambios registrados.</div>'; return; }
+  el.innerHTML=`<div class="tbl-wrap"><table class="hist-table">
+    <thead><tr><th>Cliente</th><th>Destino</th><th class="r">km</th><th>Cat.</th><th class="r">Tarifa anterior</th><th class="r">Tarifa nueva</th><th class="r">Var.%</th><th>Ref.</th><th>Justificación</th><th>Fecha</th></tr></thead>
+    <tbody>${hist.map(h=>`<tr>
+      <td style="font-size:11px">${h.proveedor}</td>
+      <td style="font-size:11px">${h.destino}</td>
+      <td class="r">${h.km}</td>
+      <td><span class="bdg ${h.categoria==='Peligroso'?'bp':'bg2'}">${h.categoria||'—'}</span></td>
+      <td class="r">${fmt(h.tarifaAnterior)}</td>
+      <td class="r" style="font-weight:600">${fmt(h.tarifaNueva)}</td>
+      <td class="r ${h.variacion>0?'dan':h.variacion<0?'ok':''}">${h.variacion>=0?'+':''}${h.variacion.toFixed(2)}%</td>
+      <td>${tagRef(h.ref)}</td>
+      <td style="font-size:11px;max-width:180px">${h.just}</td>
+      <td style="font-size:11px;color:var(--tx2);white-space:nowrap">${h.fecha}</td>
+    </tr>`).join('')}</tbody>
+  </table></div>`;
+}
+function exportarHistorial(){
+  const hist=getHistorial();
+  if(!hist.length){ alert('No hay historial para exportar.'); return; }
+  const header='Cliente,Destino,km,Categoría,Tarifa anterior,Tarifa nueva,Variación %,Referencia,Justificación,Fecha\n';
+  const rows=hist.map(h=>`"${h.proveedor}","${h.destino}",${h.km},"${h.categoria}",${h.tarifaAnterior},${h.tarifaNueva},${h.variacion},"${h.ref}","${h.just}","${h.fecha}"`).join('\n');
+  const blob=new Blob([header+rows],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='historial_tarifas_explora.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+async function borrarHistorial(){
+  if(!confirm('¿Borrar todo el historial de cambios?')) return;
+  await saveHistorial([]); renderHistorial();
+}
+
+// ── RATIOS ────────────────────────────────────────────────
+function initRatios(){
+  if(ratioInited) return; ratioInited=true;
+  const tb=document.getElementById('ratio-tb');
+  RATIOS.forEach(d=>{
+    const ratio=d.vigente/d.catac, sob=(ratio-1)*100;
+    const rc=sob>5?'dan':sob>-10?'warn':'ok';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${d.r}</td><td class="r">${d.km}</td><td class="r">${fmt(d.vigente)}</td><td class="r" style="color:var(--tx2)">${fmt(d.catac)}</td><td class="r" style="font-weight:500">${ratio.toFixed(3)}</td><td class="r ${rc}">${fp(sob)}</td>`;
+    tb.appendChild(tr);
+  });
+  const pts=RATIOS.map(d=>({x:d.km,y:parseFloat((d.vigente/d.catac).toFixed(3))}));
+  const xr=Array.from({length:20},(_,i)=>i*50+10);
+  const trend=xr.map(x=>({x,y:parseFloat((0.745+0.000161*x).toFixed(3))}));
+  new Chart(document.getElementById('chartRatio'),{
+    type:'scatter',
+    data:{datasets:[
+      {label:'Ratios',data:pts,backgroundColor:'#1a3a2a',pointRadius:5},
+      {label:'Tendencia',data:trend,type:'line',borderColor:'#7c4a12',borderWidth:1.5,borderDash:[4,3],pointRadius:0,fill:false},
+      {label:'CATAC=1.0',data:[{x:0,y:1},{x:1000,y:1}],type:'line',borderColor:'#9b9890',borderWidth:1,borderDash:[2,4],pointRadius:0,fill:false},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{min:0,max:1000,title:{display:true,text:'km',font:{size:11}}},y:{min:0.6,max:1.2,title:{display:true,text:'Ratio Vigente/CATAC',font:{size:11}}}}}
+  });
+}
+
+// ── TABS ──────────────────────────────────────────────────
+function sw(t){
+  const panels=['pc','pg','pr','pa','pe'];
+  const tabs=['c','g','r','a','e'];
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',tabs[i]===t));
+  panels.forEach((id,i)=>{ const p=document.getElementById(id); if(p) p.classList.toggle('active',tabs[i]===t); });
+  if(t==='r') initRatios();
+  if(t==='e'){ renderEditorTabla(); renderHistorial(); actualizarVersionCatac(); }
+}
+
+// ── EXPORT PDF (generador) ────────────────────────────────
+const LOGO_XP3 = 'data:image/jpeg;base64,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';
+function exportarPDF(){
+  if(!pendingApproval) return;
+  const fechaHoy=new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'});
+  const html=`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Tarifa Explora</title>
+  <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Calibri,Arial,sans-serif;font-size:9pt;color:#111;background:#fff}
+  .hdr{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #1b3d2b;padding-bottom:6px;margin-bottom:16px}
+  .hdr img{height:22px} .hdr-r{font-size:7pt;color:#888}
+  .title{font-size:12pt;font-weight:700;color:#1b3d2b;margin-bottom:4px}
+  .sub{font-size:8pt;color:#aaa;margin-bottom:16px}
+  table{width:100%;border-collapse:collapse;font-size:8pt}
+  th{padding:4px 8px;background:#f5f3ee;border-bottom:1px solid #e4e0d8;text-align:left;font-size:7pt;text-transform:uppercase;color:#888}
+  td{padding:5px 8px;border-bottom:1px solid #f0ede6}
+  td.r{text-align:right;font-family:monospace;font-weight:700}
+  .ftr{margin-top:20px;border-top:1.5px solid #cc0000;padding-top:8px;font-size:6.5pt;color:#555}
+  </style></head><body>
+  <div class="hdr"><img src="${LOGO_XP3}" alt="Explora S.A."><div class="hdr-r">${fechaHoy}</div></div>
+  <div class="title">Tarifa de referencia — Explora S.A.</div>
+  <div class="sub">Calculada sobre tarifario vigente Abr 2026</div>
+  <table><thead><tr><th>Cliente</th><th>Producto</th><th>Destino</th><th>km</th><th class="r">Tarifa sugerida ($/Tn)</th></tr></thead>
+  <tbody><tr><td>${pendingApproval.proveedor}</td><td>${pendingApproval.producto}</td><td>${pendingApproval.destino}</td><td>${pendingApproval.km}</td><td class="r">${fmt(pendingApproval.tarifa_vigente)}</td></tr></tbody></table>
+  <div class="ftr"><strong>Confidencial — Explora S.A.</strong> · Tarifa de referencia sujeta a confirmación.</div>
+  </body></html>`;
+  const win=window.open('','_blank','width=800,height=600');
+  win.document.write(html); win.document.close();
+  setTimeout(()=>win.print(),800);
+}
+
+// ── EXPORTAR EXCEL CONSULTA ──────────────────────────────
+function exportarExcel(soloSeleccionadas){
+  const todasFiltradas = getFilt();
+  if(!todasFiltradas.length){ alert('No hay tarifas para exportar.'); return; }
+  let filas = todasFiltradas;
+  if(soloSeleccionadas){
+    const checks = document.querySelectorAll('.chk-consulta:checked');
+    if(!checks.length){ alert('Seleccioná al menos una tarifa.'); return; }
+    const indices = Array.from(checks).map(c=>parseInt(c.dataset.i));
+    filas = indices.map(i=>todasFiltradas[i]);
+  }
+  generarExcel(filas, 'Tarifas_Explora_' + new Date().toLocaleDateString('es-AR').replace(/\//g,'-') + '.xlsx', false);
+}
+
+// ── EXPORTAR EXCEL MODIFICADAS (admin) ───────────────────
+function exportarExcelMods(soloSeleccionadas){
+  const mods = getMods();
+  const indices = Object.keys(mods);
+  if(!indices.length){ alert('No hay modificaciones para exportar.'); return; }
+  let lista = indices.map(i=>({...T[i], tarifa_vigente: mods[i]}));
+  if(soloSeleccionadas){
+    const checks = document.querySelectorAll('.chk-mod:checked');
+    if(!checks.length){ alert('Seleccioná al menos una.'); return; }
+    const sel = Array.from(checks).map(c=>parseInt(c.dataset.i));
+    lista = sel.map(i=>lista[i]).filter(Boolean);
+  }
+  generarExcel(lista, 'Tarifas_Modificadas_Explora_' + new Date().toLocaleDateString('es-AR').replace(/\//g,'-') + '.xlsx', true);
+}
+
+// ── GENERADOR EXCEL COMPARTIDO ────────────────────────────
+function generarExcel(filas, nombreArchivo, esMods){
+  if(typeof XLSX === 'undefined'){ alert('La librería de Excel no está disponible. Verificá tu conexión.'); return; }
+
+  const wb = XLSX.utils.book_new();
+  const ws_data = [];
+
+  // Fila 1: encabezado empresa
+  const fechaHoy = new Date().toLocaleDateString('es-AR', {day:'2-digit', month:'long', year:'numeric'});
+  ws_data.push(['EXPLORA S.A. — Tarifas de Flete', '', '', '', '']);
+  ws_data.push(['Confidencial — Uso interno', '', '', '', fechaHoy]);
+  ws_data.push(['Base: Mar 2026 × 1.0926 (+9.26% CATAMP Feb+Mar 2026)', '', '', '', '']);
+  ws_data.push([]); // fila vacía separadora
+
+  // Fila de encabezados de columna
+  ws_data.push(['Cliente / Proveedor', 'Producto', 'Destino', 'km', 'Tarifa vigente ($/Tn)']);
+
+  // Datos
+  filas.forEach(r=>{
+    ws_data.push([r.proveedor, r.producto||'—', r.destino, r.km, r.tarifa_vigente]);
+  });
+
+  // Fila vacía + pie
+  ws_data.push([]);
+  ws_data.push([`Total rutas: ${filas.length}`, '', '', '', '=SUM(E6:E${5+filas.length})', '']);
+
+  const ws = XLSX.utils.aoa_to_sheet(ws_data);
+
+  // Anchos de columna
+  ws['!cols'] = [
+    {wch: 42}, // Cliente
+    {wch: 18}, // Producto
+    {wch: 32}, // Destino
+    {wch: 8},  // km
+    {wch: 22}, // Tarifa
+  ];
+
+  // Configuración de página A4 vertical
+  ws['!pageSetup'] = {
+    paperSize: 9,       // A4
+    orientation: 'portrait',
+    fitToPage: true,
+    fitToWidth: 1,
+    fitToHeight: 0,
+    margins: {left:0.55, right:0.55, top:0.75, bottom:0.75, header:0.3, footer:0.3}
+  };
+
+  // Área de impresión
+  ws['!printArea'] = `A1:E${ws_data.length}`;
+
+  XLSX.utils.book_append_sheet(wb, ws, 'Tarifas');
+  XLSX.writeFile(wb, nombreArchivo);
+}
+
+// ── INIT ──────────────────────────────────────────────────
+// La carga de datos se hace desde Firestore tras el login.
+// onAuthStateChanged dispara initPortal() una vez autenticado.
+async function initPortal(){
+  // Mostrar indicador de carga
+  const wrap = document.querySelector('.wrap');
+  if(wrap) wrap.style.opacity = '0.4';
+  try {
+    await cargarDatosFirestore();
+    iniciarListenerMods();
+  } catch(e) {
+    console.warn('Firestore no disponible, usando datos locales:', e);
+  }
+  if(wrap) wrap.style.opacity = '1';
+  actualizarVersionCatac();
+  updateProfileUI();
+  render();
+}
+
+</script>
+
+
+</body></html>
