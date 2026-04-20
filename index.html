@@ -1012,6 +1012,7 @@ function renderAdminMods(){
   const chkAll=`<input type="checkbox" id="chk-all" title="Seleccionar todas" onchange="document.querySelectorAll('.chk-mod').forEach(c=>c.checked=this.checked)" style="cursor:pointer">`;
   const rows=indices.map((idx,i)=>{
     const t=T[idx]; const tv=mods[idx];
+    if(!t) return ''; // ignorar índices que ya no existen
     return`<tr><td><input type="checkbox" class="chk-mod" data-i="${i}" style="cursor:pointer"></td><td>${t.proveedor}</td><td>${t.destino}</td><td class="r">${t.km}</td><td>${t.producto}</td><td class="r mono" style="font-weight:600">${fmt(tv)}</td><td><button class="btn" style="height:26px;font-size:11px;padding:0 8px" onclick="borrarMod(${idx})">Quitar</button></td></tr>`;
   }).join('');
   el.innerHTML=`<div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>${chkAll}</th><th>Cliente</th><th>Destino</th><th class="r">km</th><th>Producto</th><th class="r">Tarifa vigente</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
@@ -1550,14 +1551,23 @@ function generarExcel(filas, nombreArchivo, esMods){
 // La carga de datos se hace desde Firestore tras el login.
 // onAuthStateChanged dispara initPortal() una vez autenticado.
 async function initPortal(){
-  // Mostrar indicador de carga
   const wrap = document.querySelector('.wrap');
   if(wrap) wrap.style.opacity = '0.4';
   try {
     await cargarDatosFirestore();
+    // Limpiar índices inválidos que no corresponden a rutas existentes
+    const mods = getMods();
+    const modsLimpios = {};
+    Object.keys(mods).forEach(idx => {
+      if(T[idx] !== undefined) modsLimpios[idx] = mods[idx];
+    });
+    if(Object.keys(modsLimpios).length !== Object.keys(mods).length){
+      await saveMods(modsLimpios);
+      _cache.mods = modsLimpios;
+    }
     iniciarListenerMods();
   } catch(e) {
-    console.warn('Firestore no disponible, usando datos locales:', e);
+    console.warn('Firestore no disponible:', e);
   }
   if(wrap) wrap.style.opacity = '1';
   actualizarVersionCatac();
