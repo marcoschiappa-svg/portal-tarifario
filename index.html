@@ -1204,9 +1204,10 @@ function revertirOverrides(){
   const cant=Object.keys(mods).length;
   if(!cant){ alert('No hay modificaciones aplicadas. El tarifario ya está en su estado base.'); return; }
   if(!confirm(`¿Revertir los ${cant} cambios y volver a la base (Mar 2026 × 1.0926)?\n\nEl historial se conserva.`)) return;
-  await saveMods({}); await savePendientes([]);
-  renderEditorTabla(); renderHistorial(); render();
-  alert('Tarifas revertidas a la base Mar 2026.');
+  saveMods({}).then(()=>savePendientes([])).then(()=>{
+    renderEditorTabla(); renderHistorial(); render();
+    alert('Tarifas revertidas a la base Mar 2026.');
+  });
 }
 
 // ── EDITAR / ELIMINAR LÍNEA ──────────────────────────────
@@ -1549,8 +1550,16 @@ function generarExcel(filas, nombreArchivo, esMods){
 // La carga de datos se hace desde Firestore tras el login.
 // onAuthStateChanged dispara initPortal() una vez autenticado.
 async function initPortal(){
-  await cargarDatosFirestore();
-  iniciarListenerMods();
+  // Mostrar indicador de carga
+  const wrap = document.querySelector('.wrap');
+  if(wrap) wrap.style.opacity = '0.4';
+  try {
+    await cargarDatosFirestore();
+    iniciarListenerMods();
+  } catch(e) {
+    console.warn('Firestore no disponible, usando datos locales:', e);
+  }
+  if(wrap) wrap.style.opacity = '1';
   actualizarVersionCatac();
   updateProfileUI();
   render();
