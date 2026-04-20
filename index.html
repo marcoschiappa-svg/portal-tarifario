@@ -733,6 +733,17 @@ async function cargarDatosFirestore(){
     _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
     _cache.catacVer   = (cDoc.exists  && cDoc.data().ver)   ? cDoc.data().ver   : null;
     _cache.adminPw    = (cfDoc.exists && cfDoc.data().adminPw) ? cfDoc.data().adminPw : null;
+
+    // Restaurar rutas nuevas (guardadas con clave "new_...") al array T
+    Object.keys(_cache.mods).forEach(key => {
+      if(key.startsWith('new_') && _cache.mods[key] && typeof _cache.mods[key] === 'object'){
+        const ruta = _cache.mods[key];
+        // Solo agregar si no existe ya en T
+        const existe = T.findIndex(t=>t.destino===ruta.destino&&t.proveedor===ruta.proveedor);
+        if(existe < 0) T.push(ruta);
+      }
+    });
+
     _cacheLoaded = true;
   } catch(e) {
     console.error('Error cargando Firestore:', e);
@@ -784,7 +795,12 @@ async function saveAdminPw(pw){
 // Tarifa vigente efectiva (con modificaciones aplicadas)
 function getTarifaVigente(idx){
   const mods = getMods();
-  return mods[idx] !== undefined ? mods[idx] : T[idx].tarifa_vigente;
+  if(mods[idx] !== undefined){
+    // Si es objeto (ruta nueva), devolver tarifa_vigente
+    if(typeof mods[idx] === 'object') return mods[idx].tarifa_vigente;
+    return mods[idx];
+  }
+  return T[idx] ? T[idx].tarifa_vigente : 0;
 }
 
 // ── CATAC ─────────────────────────────────────────────────
@@ -985,15 +1001,23 @@ async function confirmarAprobacion(){
     mods[idx]=pendingApproval.tarifa_vigente;
     hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:anterior,tarifaNueva:pendingApproval.tarifa_vigente,variacion:parseFloat(((pendingApproval.tarifa_vigente/anterior-1)*100).toFixed(2)),just:'Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
   } else {
-    // Ruta nueva: guardar con clave string única
+    // Ruta nueva: guardar con clave única que incluye los datos completos
     const claveNueva='new_'+Date.now();
-    mods[claveNueva]=pendingApproval.tarifa_vigente;
-    // Agregar al array T en memoria para que aparezca en consulta
-    T.push({proveedor:pendingApproval.proveedor,producto:pendingApproval.producto,destino:pendingApproval.destino,km:pendingApproval.km,tarifa_base:null,tarifa_vigente:pendingApproval.tarifa_vigente,catac:pendingApproval.catac,categoria:pendingApproval.categoria});
-    const nuevoIdx=T.length-1;
-    mods[nuevoIdx]=pendingApproval.tarifa_vigente;
-    delete mods[claveNueva];
+    // Guardar objeto completo de la ruta nueva en mods con prefijo "new_"
+    mods[claveNueva]={
+      proveedor:pendingApproval.proveedor,
+      producto:pendingApproval.producto,
+      destino:pendingApproval.destino,
+      km:pendingApproval.km,
+      tarifa_base:null,
+      tarifa_vigente:pendingApproval.tarifa_vigente,
+      catac:pendingApproval.catac,
+      categoria:pendingApproval.categoria,
+      esNueva:true
+    };
     hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:0,tarifaNueva:pendingApproval.tarifa_vigente,variacion:100,just:'Nueva ruta — Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
+    // Agregar al array T en memoria
+    T.push({...mods[claveNueva]});
   }
   await saveMods(mods);
   await saveHistorial(hist);
@@ -1011,7 +1035,17 @@ function renderAdminMods(){
   if(!indices.length){ el.innerHTML='<div style="color:var(--tx3);font-size:13px;padding:12px 0">No hay tarifas modificadas guardadas.</div>'; return; }
   const chkAll=`<input type="checkbox" id="chk-all" title="Seleccionar todas" onchange="document.querySelectorAll('.chk-mod').forEach(c=>c.checked=this.checked)" style="cursor:pointer">`;
   const rows=indices.map((idx,i)=>{
-    const t=T[idx]; const tv=mods[idx];
+    const mods=getMods();
+    let t, tv;
+    if(idx.startsWith && idx.startsWith('new_')){
+      // Ruta nueva — datos completos en mods
+      t = mods[idx];
+      tv = t ? t.tarifa_vigente : 0;
+    } else {
+      t = T[idx];
+      tv = mods[idx];
+      if(typeof tv === 'object') tv = tv ? tv.tarifa_vigente : 0;
+    }
     if(!t) return ''; // ignorar índices que ya no existen
     return`<tr><td><input type="checkbox" class="chk-mod" data-i="${i}" style="cursor:pointer"></td><td>${t.proveedor}</td><td>${t.destino}</td><td class="r">${t.km}</td><td>${t.producto}</td><td class="r mono" style="font-weight:600">${fmt(tv)}</td><td><button class="btn" style="height:26px;font-size:11px;padding:0 8px" onclick="borrarMod(${idx})">Quitar</button></td></tr>`;
   }).join('');
