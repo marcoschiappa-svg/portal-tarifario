@@ -727,7 +727,10 @@ async function cargarDatosFirestore(){
       DOC_MODS.get(), DOC_PENDIENTES.get(), DOC_HISTORIAL.get(),
       DOC_CATAC.get(), DOC_CONFIG.get()
     ]);
-    _cache.mods       = (mDoc.exists  && mDoc.data().data)  ? mDoc.data().data  : {};
+    // Combinar mods simples y rutas nuevas en _cache.mods
+    const modsSimples = (mDoc.exists && mDoc.data().data) ? mDoc.data().data : {};
+    const rutasNuevas = (mDoc.exists && mDoc.data().rutas_nuevas) ? mDoc.data().rutas_nuevas : {};
+    _cache.mods = {...modsSimples, ...rutasNuevas};
     _cache.pendientes = (pDoc.exists  && pDoc.data().data)  ? pDoc.data().data  : [];
     _cache.historial  = (hDoc.exists  && hDoc.data().data)  ? hDoc.data().data  : [];
     _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
@@ -777,7 +780,15 @@ function getHistorial(){ return _cache.historial || []; }
 // Funciones asíncronas (escriben en Firestore y actualizan cache)
 async function saveMods(o){
   _cache.mods = o;
-  await DOC_MODS.set({data: o});
+  // Separar modificaciones simples (número) de rutas nuevas (objeto)
+  const modsSimples = {};
+  const rutasNuevas = {};
+  Object.keys(o).forEach(k => {
+    if(typeof o[k] === 'object' && o[k] !== null) rutasNuevas[k] = o[k];
+    else modsSimples[k] = o[k];
+  });
+  await DOC_MODS.set({data: modsSimples, rutas_nuevas: rutasNuevas});
+  console.log('saveMods OK — simples:', Object.keys(modsSimples).length, 'nuevas:', Object.keys(rutasNuevas).length);
 }
 async function savePendientes(p){
   _cache.pendientes = p;
