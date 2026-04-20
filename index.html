@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0053)https://marcoschiappa-svg.github.io/portal-tarifario/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Portal Tarifario — Explora</title>
 <style>
@@ -116,6 +116,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -124,11 +125,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
      Se oculta automáticamente tras login exitoso.
      El portal de abajo no es accesible mientras esto esté visible.
 ═══════════════════════════════════════════════════════ -->
-<div id="auth-screen" style="
-  position:fixed;inset:0;z-index:9999;
-  background:#f7f6f2;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'DM Sans',sans-serif;">
+<div id="auth-screen" style="position: fixed; inset: 0px; z-index: 9999; background: rgb(247, 246, 242); display: none; align-items: center; justify-content: center; font-family: &quot;DM Sans&quot;, sans-serif;">
   <div style="
     background:#fff;border:1px solid #e2dfd6;border-radius:14px;
     padding:44px 48px;width:100%;max-width:400px;text-align:center;
@@ -145,15 +142,13 @@ input.edited{background:#fef9c3;border-color:#fde047}
         display:flex;align-items:center;justify-content:center;gap:10px;
         width:100%;height:44px;border-radius:8px;
         border:1px solid #e2dfd6;background:#fff;
-        font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;
-        color:#1a1917;cursor:pointer;transition:background .15s;"
-        onmouseover="this.style.background='#f7f6f2'"
-        onmouseout="this.style.background='#fff'">
+        font-family:&#39;DM Sans&#39;,sans-serif;font-size:14px;font-weight:500;
+        color:#1a1917;cursor:pointer;transition:background .15s;" onmouseover="this.style.background=&#39;#f7f6f2&#39;" onmouseout="this.style.background=&#39;#fff&#39;">
         <svg width="18" height="18" viewBox="0 0 48 48">
-          <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.8 2.5 30.2 0 24 0 14.6 0 6.6 5.5 2.7 13.5l7.9 6.1C12.5 13.4 17.8 9.5 24 9.5z"/>
-          <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17z"/>
-          <path fill="#FBBC05" d="M10.6 28.4A14.8 14.8 0 0 1 9.5 24c0-1.5.3-3 .7-4.4L2.3 13.5A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.1-6.2z"/>
-          <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4-13.4-9.5l-8 6.2C6.6 42.5 14.6 48 24 48z"/>
+          <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.8 2.5 30.2 0 24 0 14.6 0 6.6 5.5 2.7 13.5l7.9 6.1C12.5 13.4 17.8 9.5 24 9.5z"></path>
+          <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17z"></path>
+          <path fill="#FBBC05" d="M10.6 28.4A14.8 14.8 0 0 1 9.5 24c0-1.5.3-3 .7-4.4L2.3 13.5A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.1-6.2z"></path>
+          <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4-13.4-9.5l-8 6.2C6.6 42.5 14.6 48 24 48z"></path>
         </svg>
         Ingresar con Google
       </button>
@@ -173,7 +168,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
       <button onclick="signOut()" style="
         height:36px;padding:0 18px;border-radius:8px;
         border:1px solid #e2dfd6;background:#fff;
-        font-family:'DM Sans',sans-serif;font-size:13px;color:#6b6760;cursor:pointer">
+        font-family:&#39;DM Sans&#39;,sans-serif;font-size:13px;color:#6b6760;cursor:pointer">
         Usar otra cuenta
       </button>
     </div>
@@ -184,7 +179,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
       <button onclick="showAuthInitial()" style="
         height:36px;padding:0 18px;border-radius:8px;
         border:1px solid #e2dfd6;background:#fff;
-        font-family:'DM Sans',sans-serif;font-size:13px;color:#6b6760;cursor:pointer">
+        font-family:&#39;DM Sans&#39;,sans-serif;font-size:13px;color:#6b6760;cursor:pointer">
         Reintentar
       </button>
     </div>
@@ -211,11 +206,11 @@ input.edited{background:#fef9c3;border-color:#fde047}
 <!-- TABS -->
 <div style="background:var(--sur);border-bottom:1px solid var(--brd)">
   <div class="tabs">
-    <div class="tab active" onclick="sw('c')">Consulta de tarifas</div>
-    <div class="tab" onclick="sw('g')">Generador</div>
-    <div class="tab" onclick="sw('r')">Ratios peligrosas</div>
-    <div class="tab admin-only" id="tab-admin" style="display:none" onclick="sw('a')">Administración</div>
-    <div class="tab admin-only" id="tab-editor" style="display:none" onclick="sw('e')">Editor de tarifas</div>
+    <div class="tab active" onclick="sw(&#39;c&#39;)">Consulta de tarifas</div>
+    <div class="tab" onclick="sw(&#39;g&#39;)">Generador</div>
+    <div class="tab" onclick="sw(&#39;r&#39;)">Ratios peligrosas</div>
+    <div class="tab admin-only" id="tab-admin" style="display:none" onclick="sw(&#39;a&#39;)">Administración</div>
+    <div class="tab admin-only" id="tab-editor" style="display:none" onclick="sw(&#39;e&#39;)">Editor de tarifas</div>
   </div>
 </div>
 
@@ -228,7 +223,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
     <div class="fg"><label>Categoría</label>
       <select id="fc" onchange="render()"><option value="">Todas</option><option value="General">General</option><option value="Peligroso">Peligroso</option></select>
     </div>
-    <div class="fg"><label>Producto</label><select id="fp" onchange="render()"><option value="">Todos</option></select></div>
+    <div class="fg"><label>Producto</label><select id="fp" onchange="render()"><option value="">Todos</option><option value="Aceite">Aceite</option><option value="Biodiesel">Biodiesel</option><option value="EMAG">EMAG</option><option value="Glicerina">Glicerina</option><option value="Glicerina Tecnica">Glicerina Tecnica</option><option value="Oleina">Oleina</option><option value="RINP / HFFA">RINP / HFFA</option></select></div>
     <div class="fg" style="margin-left:auto;display:flex;gap:8px;align-items:flex-end"><label>&nbsp;</label>
       <button class="btn" onclick="limpiar()">Limpiar</button>
       <span id="btns-pdf-consulta" style="display:none;gap:8px">
@@ -241,7 +236,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><input type="checkbox" id="chk-consulta-all" title="Seleccionar todas" onchange="document.querySelectorAll('.chk-consulta').forEach(c=>c.checked=this.checked)" style="cursor:pointer"></th>
+        <th><input type="checkbox" id="chk-consulta-all" title="Seleccionar todas" onchange="document.querySelectorAll(&#39;.chk-consulta&#39;).forEach(c=&gt;c.checked=this.checked)" style="cursor:pointer"></th>
         <th>Cliente / Proveedor</th><th>Producto</th><th>Destino</th>
         <th class="r">km</th><th>Cat.</th>
         <th class="r">Tarifa vigente</th>
@@ -288,7 +283,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
       <div class="card-h">Resultado</div>
       <div id="gres">
         <div class="res-empty">
-          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <span>Completá km y producto para calcular</span>
         </div>
       </div>
@@ -349,7 +344,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
     </div>
     <div>
       <div class="admin-section">
-        <h3>Tarifas modificadas <span id="aprobadas-count" style="font-size:11px;font-weight:400;color:var(--tx3)"></span></h3>
+        <h3>Tarifas modificadas <span id="aprobadas-count" style="font-size:11px;font-weight:400;color:var(--tx3)">(2 registros)</span></h3>
         <div id="aprobadas-list">
           <div style="color:var(--tx3);font-size:13px;padding:12px 0">No hay tarifas modificadas guardadas.</div>
         </div>
@@ -441,7 +436,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
     <div class="editor-section">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
         <h3>Actualizar tabla de referencia CATAC</h3>
-        <span id="catac-version" style="font-size:11px;color:var(--tx3)"></span>
+        <span id="catac-version" style="font-size:11px;color:var(--tx3)">Usando tabla embebida (CATAC Ene-2026 proy.)</span>
       </div>
       <p style="font-size:12px;color:var(--tx2);margin-bottom:14px">Cuando recibas la nueva tabla CATAC en PDF, abrila, seleccioná todo el texto y pegalo acá. El portal detecta automáticamente los pares km/valor en formato argentino (ej: <span style="font-family:var(--mono)">280 47.178,13</span>).</p>
       <div class="fr">
@@ -519,10 +514,10 @@ input.edited{background:#fef9c3;border-color:#fde047}
   <div class="modal">
     <h3>Acceso de administrador</h3>
     <p>Ingresá la clave para activar el modo administrador.</p>
-    <div class="fr"><label>Clave</label><input type="password" id="login-pw" placeholder="Clave de administrador" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="fr"><label>Clave</label><input type="password" id="login-pw" placeholder="Clave de administrador" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()"></div>
     <div class="modal-err" id="login-err"></div>
     <div class="modal-btns">
-      <button class="btn" onclick="closeModal('modal-login')">Cancelar</button>
+      <button class="btn" onclick="closeModal(&#39;modal-login&#39;)">Cancelar</button>
       <button class="btn btn-p" onclick="doLogin()">Ingresar</button>
     </div>
   </div>
@@ -534,7 +529,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
     <h3>Cerrar sesión admin</h3>
     <p>¿Querés cerrar la sesión de administrador y volver al perfil de usuario?</p>
     <div class="modal-btns">
-      <button class="btn" onclick="closeModal('modal-logout')">Cancelar</button>
+      <button class="btn" onclick="closeModal(&#39;modal-logout&#39;)">Cancelar</button>
       <button class="btn btn-danger" onclick="doLogout()">Cerrar sesión</button>
     </div>
   </div>
@@ -569,7 +564,7 @@ input.edited{background:#fef9c3;border-color:#fde047}
     </div>
     <div class="modal-err" id="el-err"></div>
     <div class="modal-btns">
-      <button class="btn" onclick="closeModal('modal-editar-linea')">Cancelar</button>
+      <button class="btn" onclick="closeModal(&#39;modal-editar-linea&#39;)">Cancelar</button>
       <button class="btn btn-p" onclick="confirmarEditorLinea()">Guardar cambios</button>
     </div>
   </div>
@@ -581,11 +576,11 @@ input.edited{background:#fef9c3;border-color:#fde047}
     <h3>Aprobar tarifa</h3>
     <p id="aprobar-desc">Confirmá que esta tarifa pasa a vigente.</p>
     <div class="fr"><label>Clave de administrador</label>
-      <input type="password" id="aprobar-pw" placeholder="Clave admin" onkeydown="if(event.key==='Enter')confirmarAprobacion()">
+      <input type="password" id="aprobar-pw" placeholder="Clave admin" onkeydown="if(event.key===&#39;Enter&#39;)confirmarAprobacion()">
     </div>
     <div class="modal-err" id="aprobar-err"></div>
     <div class="modal-btns">
-      <button class="btn" onclick="closeModal('modal-aprobar')">Cancelar</button>
+      <button class="btn" onclick="closeModal(&#39;modal-aprobar&#39;)">Cancelar</button>
       <button class="btn btn-approve" onclick="confirmarAprobacion()">Aprobar y pasar a vigente</button>
     </div>
   </div>
@@ -672,12 +667,8 @@ fbAuth.onAuthStateChanged(user => {
   if (CORREOS_AUTORIZADOS.length === 0 || CORREOS_AUTORIZADOS.map(e=>e.toLowerCase()).includes(email)) {
     // Autorizado → ocultar pantalla y mostrar portal
     document.getElementById('auth-screen').style.display = 'none';
-    // Actualizar el badge del header con el email del usuario
-    const badge = document.getElementById('profile-btn');
-    if (badge) {
-      const spans = badge.querySelectorAll('span');
-      // El último span de texto del badge muestra el perfil activo
-    }
+    // Cargar datos de Firestore e inicializar portal
+    initPortal();
   } else {
     // No autorizado → mostrar pantalla de acceso denegado
     document.getElementById('auth-screen').style.display = 'flex';
@@ -706,23 +697,89 @@ let pendingApproval = null;
 let chartRatioInst = null;
 let ratioInited = false;
 
-const LS_PW       = 'explora_admin_pw';
-const LS_MODS     = 'explora_mods';       // overrides vigentes (idx → tarifa)
-const LS_PENDIENTES = 'explora_pendientes';
-const LS_HISTORIAL  = 'explora_historial';
-const LS_CATAC      = 'explora_catac';
-const LS_CATAC_VER  = 'explora_catac_ver';
 const DEFAULT_PW  = 'explora2026';
-
 let catacParsed = null;
 
-function getAdminPw(){ return localStorage.getItem(LS_PW) || DEFAULT_PW; }
-function getMods(){ try{ return JSON.parse(localStorage.getItem(LS_MODS)||'{}'); }catch(e){ return {}; } }
-function saveMods(o){ localStorage.setItem(LS_MODS, JSON.stringify(o)); }
-function getPendientes(){ try{ return JSON.parse(localStorage.getItem(LS_PENDIENTES)||'[]'); }catch(e){ return []; } }
-function savePendientes(p){ localStorage.setItem(LS_PENDIENTES, JSON.stringify(p)); }
-function getHistorial(){ try{ return JSON.parse(localStorage.getItem(LS_HISTORIAL)||'[]'); }catch(e){ return []; } }
-function saveHistorial(h){ localStorage.setItem(LS_HISTORIAL, JSON.stringify(h)); }
+// ── FIRESTORE ─────────────────────────────────────────────
+// Todos los datos compartidos se guardan en Firestore.
+// Estructura: colección "portal" con documentos fijos:
+//   portal/mods       → {data: {...}}
+//   portal/pendientes → {data: [...]}
+//   portal/historial  → {data: [...]}
+//   portal/catac      → {data: {...}, ver: {...}}
+//   portal/config     → {adminPw: "..."}
+
+const db = firebase.firestore();
+const DOC_MODS       = db.collection('portal').doc('mods');
+const DOC_PENDIENTES = db.collection('portal').doc('pendientes');
+const DOC_HISTORIAL  = db.collection('portal').doc('historial');
+const DOC_CATAC      = db.collection('portal').doc('catac');
+const DOC_CONFIG     = db.collection('portal').doc('config');
+
+// Cache local para operaciones síncronas dentro de la sesión
+let _cache = { mods:{}, pendientes:[], historial:[], catac:null, catacVer:null, adminPw:null };
+let _cacheLoaded = false;
+
+// Carga inicial de todos los datos desde Firestore
+async function cargarDatosFirestore(){
+  try {
+    const [mDoc, pDoc, hDoc, cDoc, cfDoc] = await Promise.all([
+      DOC_MODS.get(), DOC_PENDIENTES.get(), DOC_HISTORIAL.get(),
+      DOC_CATAC.get(), DOC_CONFIG.get()
+    ]);
+    _cache.mods       = (mDoc.exists  && mDoc.data().data)  ? mDoc.data().data  : {};
+    _cache.pendientes = (pDoc.exists  && pDoc.data().data)  ? pDoc.data().data  : [];
+    _cache.historial  = (hDoc.exists  && hDoc.data().data)  ? hDoc.data().data  : [];
+    _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
+    _cache.catacVer   = (cDoc.exists  && cDoc.data().ver)   ? cDoc.data().ver   : null;
+    _cache.adminPw    = (cfDoc.exists && cfDoc.data().adminPw) ? cfDoc.data().adminPw : null;
+    _cacheLoaded = true;
+  } catch(e) {
+    console.error('Error cargando Firestore:', e);
+    _cacheLoaded = true;
+  }
+}
+
+// Escuchar cambios en tiempo real para mods (tarifas aprobadas)
+function iniciarListenerMods(){
+  DOC_MODS.onSnapshot(snap => {
+    if(snap.exists && snap.data().data){
+      _cache.mods = snap.data().data;
+      render();
+      renderAdminMods();
+    }
+  });
+  DOC_HISTORIAL.onSnapshot(snap => {
+    if(snap.exists && snap.data().data){
+      _cache.historial = snap.data().data;
+      renderHistorial();
+    }
+  });
+}
+
+// Funciones síncronas (leen del cache)
+function getAdminPw(){ return _cache.adminPw || DEFAULT_PW; }
+function getMods(){ return _cache.mods || {}; }
+function getPendientes(){ return _cache.pendientes || []; }
+function getHistorial(){ return _cache.historial || []; }
+
+// Funciones asíncronas (escriben en Firestore y actualizan cache)
+async function saveMods(o){
+  _cache.mods = o;
+  await DOC_MODS.set({data: o});
+}
+async function savePendientes(p){
+  _cache.pendientes = p;
+  await DOC_PENDIENTES.set({data: p});
+}
+async function saveHistorial(h){
+  _cache.historial = h;
+  await DOC_HISTORIAL.set({data: h});
+}
+async function saveAdminPw(pw){
+  _cache.adminPw = pw;
+  await DOC_CONFIG.set({adminPw: pw}, {merge: true});
+}
 
 // Tarifa vigente efectiva (con modificaciones aplicadas)
 function getTarifaVigente(idx){
@@ -732,8 +789,7 @@ function getTarifaVigente(idx){
 
 // ── CATAC ─────────────────────────────────────────────────
 function getCatacActivo(){
-  try{ const s=localStorage.getItem(LS_CATAC); if(s) return JSON.parse(s); }catch(e){}
-  return null;
+  return _cache.catac || null;
 }
 function getCatacTabla(tabla, km){
   km=Math.round(km);
@@ -804,9 +860,10 @@ function cambiarClave(){
   if(old!==getAdminPw()){ msg.style.color='#8b1f1f'; msg.textContent='Clave actual incorrecta.'; return; }
   if(nw.length<6){ msg.style.color='#8b1f1f'; msg.textContent='La nueva clave debe tener al menos 6 caracteres.'; return; }
   if(nw!==cf){ msg.style.color='#8b1f1f'; msg.textContent='Las claves no coinciden.'; return; }
-  localStorage.setItem(LS_PW, nw);
-  msg.style.color='#166534'; msg.textContent='Clave actualizada correctamente.';
-  document.getElementById('old-pw').value=''; document.getElementById('new-pw').value=''; document.getElementById('conf-pw').value='';
+  saveAdminPw(nw).then(()=>{
+    msg.style.color='#166534'; msg.textContent='Clave actualizada correctamente.';
+    document.getElementById('old-pw').value=''; document.getElementById('new-pw').value=''; document.getElementById('conf-pw').value='';
+  });
 }
 
 // ── CONSULTA ──────────────────────────────────────────────
@@ -916,7 +973,7 @@ function abrirAprobacion(){
   document.getElementById('modal-aprobar').classList.add('open');
   setTimeout(()=>document.getElementById('aprobar-pw').focus(),100);
 }
-function confirmarAprobacion(){
+async function confirmarAprobacion(){
   const pw=document.getElementById('aprobar-pw').value;
   if(pw!==getAdminPw()){ document.getElementById('aprobar-err').textContent='Clave incorrecta.'; return; }
   const mods=getMods();
@@ -938,8 +995,8 @@ function confirmarAprobacion(){
     delete mods[claveNueva];
     hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:0,tarifaNueva:pendingApproval.tarifa_vigente,variacion:100,just:'Nueva ruta — Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
   }
-  saveMods(mods);
-  saveHistorial(hist);
+  await saveMods(mods);
+  await saveHistorial(hist);
   closeModal('modal-aprobar');
   render(); renderAdminMods(); calc();
   alert('Tarifa aprobada y pasada a vigente.');
@@ -959,13 +1016,13 @@ function renderAdminMods(){
   }).join('');
   el.innerHTML=`<div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>${chkAll}</th><th>Cliente</th><th>Destino</th><th class="r">km</th><th>Producto</th><th class="r">Tarifa vigente</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
-function borrarMod(idx){
+async function borrarMod(idx){
   if(!confirm('¿Quitar esta modificación?')) return;
-  const mods=getMods(); delete mods[idx]; saveMods(mods); renderAdminMods(); render();
+  const mods=getMods(); delete mods[idx]; await saveMods(mods); renderAdminMods(); render();
 }
-function confirmarBorrarTodas(){
+async function confirmarBorrarTodas(){
   if(!confirm('¿Borrar TODAS las modificaciones? Las tarifas volverán a la base (Mar 2026 × 1.0926).')) return;
-  saveMods({}); renderAdminMods(); render();
+  await saveMods({}); renderAdminMods(); render();
 }
 function exportarAprobadas(){
   const mods=getMods(); const indices=Object.keys(mods);
@@ -1007,14 +1064,15 @@ function parsearCatac(){
   msg.style.color='#166534'; msg.textContent=`${total} pares km/valor listos para activar.`;
   btn.style.display='inline-block';
 }
-function confirmarCatac(){
+async function confirmarCatac(){
   if(!catacParsed){ alert('Primero validá la tabla.'); return; }
   if(!confirm(`¿Activar la tabla "${catacParsed.desc}" con ${catacParsed.total} valores?`)) return;
-  localStorage.setItem(LS_CATAC, JSON.stringify(catacParsed.datos));
-  localStorage.setItem(LS_CATAC_VER, JSON.stringify({desc:catacParsed.desc,fecha:catacParsed.fecha,total:catacParsed.total}));
+  _cache.catac = catacParsed.datos;
+  _cache.catacVer = {desc:catacParsed.desc,fecha:catacParsed.fecha,total:catacParsed.total};
+  await DOC_CATAC.set({datos:catacParsed.datos, ver:_cache.catacVer});
   const hist=getHistorial();
   hist.unshift({proveedor:'— Sistema —',destino:'Tabla CATAC completa',km:'—',categoria:'—',tarifaAnterior:0,tarifaNueva:0,variacion:0,just:`Tabla actualizada: ${catacParsed.desc} (${catacParsed.total} valores)`,ref:'CATAC',fecha:catacParsed.fecha});
-  saveHistorial(hist);
+  await saveHistorial(hist);
   document.getElementById('catac-txt').value='';
   document.getElementById('catac-desc').value='';
   document.getElementById('catac-preview').style.display='none';
@@ -1052,7 +1110,7 @@ function previewGlobal(){
   prev.innerHTML=`<strong>${total} rutas</strong> ${scope==='all'?'(toda la cartera)':scope} · Factor: ×${factor.toFixed(4)} · ${tagRef(ref)}<br>Ejemplo: ${ej.proveedor} ${fmt(ejActual)} → <strong>${fmt(ejNueva)}</strong> (${pct>=0?'+':''}${pct.toFixed(2)}%)`;
   btn.style.display='block';
 }
-function confirmarGlobal(){
+async function confirmarGlobal(){
   const pct=parseFloat(document.getElementById('ed-pct').value);
   const scope=document.getElementById('ed-scope').value;
   const just=document.getElementById('ed-just').value.trim();
@@ -1069,7 +1127,7 @@ function confirmarGlobal(){
     const entry={idx:i,proveedor:t.proveedor,destino:t.destino,km:t.km,categoria:t.categoria,tarifaAnterior:actual,tarifaNueva:nueva,variacion:pct,just,ref,fecha};
     if(existe>=0) pendientes[existe]=entry; else pendientes.push(entry);
   });
-  savePendientes(pendientes);
+  await savePendientes(pendientes);
   document.getElementById('ed-preview').style.display='none';
   document.getElementById('ed-confirm-btn').style.display='none';
   document.getElementById('ed-pct').value='';
@@ -1111,7 +1169,7 @@ function renderEditorTabla(){
   }).join('');
   tb.innerHTML=filas||'<tr><td colspan="8" class="no-res">Sin resultados</td></tr>';
 }
-function editarIndividual(input){
+async function editarIndividual(input){
   const idx=parseInt(input.dataset.idx);
   const actual=parseFloat(input.dataset.actual);
   const nueva=parseFloat(input.value);
@@ -1127,26 +1185,26 @@ function editarIndividual(input){
   savePendientes(pendientes);
   renderEditorTabla();
 }
-function aprobarPendientes(){
+async function aprobarPendientes(){
   const pendientes=getPendientes();
   if(!pendientes.length){ alert('No hay cambios pendientes.'); return; }
   const mods=getMods(); const hist=getHistorial();
   pendientes.forEach(p=>{ mods[p.idx]=p.tarifaNueva; hist.unshift(p); });
-  saveMods(mods); saveHistorial(hist); savePendientes([]);
+  await saveMods(mods); await saveHistorial(hist); await savePendientes([]);
   renderEditorTabla(); renderHistorial(); render();
   alert(`${pendientes.length} tarifas actualizadas y registradas en el historial.`);
 }
-function descartarPendientes(){
+async function descartarPendientes(){
   if(!getPendientes().length){ alert('No hay cambios pendientes.'); return; }
   if(!confirm('¿Descartar todos los cambios pendientes?')) return;
-  savePendientes([]); renderEditorTabla();
+  await savePendientes([]); renderEditorTabla();
 }
 function revertirOverrides(){
   const mods=getMods();
   const cant=Object.keys(mods).length;
   if(!cant){ alert('No hay modificaciones aplicadas. El tarifario ya está en su estado base.'); return; }
   if(!confirm(`¿Revertir los ${cant} cambios y volver a la base (Mar 2026 × 1.0926)?\n\nEl historial se conserva.`)) return;
-  saveMods({}); savePendientes([]);
+  await saveMods({}); await savePendientes([]);
   renderEditorTabla(); renderHistorial(); render();
   alert('Tarifas revertidas a la base Mar 2026.');
 }
@@ -1169,7 +1227,7 @@ function abrirEditorLinea(idx){
   setTimeout(()=>document.getElementById('el-proveedor').focus(), 100);
 }
 
-function confirmarEditorLinea(){
+async function confirmarEditorLinea(){
   const idx = parseInt(document.getElementById('el-idx').value);
   const proveedor = document.getElementById('el-proveedor').value.trim();
   const producto = document.getElementById('el-producto').value;
@@ -1206,7 +1264,7 @@ function confirmarEditorLinea(){
     ref: 'Otro',
     fecha: new Date().toLocaleDateString('es-AR')
   });
-  saveHistorial(hist);
+  await saveHistorial(hist);
 
   closeModal('modal-editar-linea');
   renderEditorTabla();
@@ -1214,7 +1272,7 @@ function confirmarEditorLinea(){
   renderHistorial();
 }
 
-function eliminarLinea(idx){
+async function eliminarLinea(idx){
   const t = T[idx];
   if(!confirm(`¿Eliminar la línea "${t.proveedor} — ${t.destino}"?
 
@@ -1230,7 +1288,7 @@ Esta acción no se puede deshacer.`)) return;
     ref: 'Otro',
     fecha: new Date().toLocaleDateString('es-AR')
   });
-  saveHistorial(hist);
+  await saveHistorial(hist);
 
   // Guardar índice eliminado para persistencia
   const elim = getEliminadas();
@@ -1241,9 +1299,9 @@ Esta acción no se puede deshacer.`)) return;
   T.splice(idx, 1);
   const mods = getMods();
   delete mods[idx];
-  saveMods(mods);
+  await saveMods(mods);
   const pend = getPendientes().filter(p=>p.idx !== idx);
-  savePendientes(pend);
+  await savePendientes(pend);
 
   renderEditorTabla();
   render();
@@ -1335,9 +1393,9 @@ function exportarHistorial(){
   const a=document.createElement('a'); a.href=url; a.download='historial_tarifas_explora.csv'; a.click();
   URL.revokeObjectURL(url);
 }
-function borrarHistorial(){
+async function borrarHistorial(){
   if(!confirm('¿Borrar todo el historial de cambios?')) return;
-  saveHistorial([]); renderHistorial();
+  await saveHistorial([]); renderHistorial();
 }
 
 // ── RATIOS ────────────────────────────────────────────────
@@ -1488,35 +1546,17 @@ function generarExcel(filas, nombreArchivo, esMods){
 }
 
 // ── INIT ──────────────────────────────────────────────────
-// Limpieza automática de datos de versiones anteriores
-(function limpiarVersionAnterior(){
-  const VERSION = 'v2_mar2026_r3';
-  const LS_VER  = 'explora_version';
-  if(localStorage.getItem(LS_VER) !== VERSION){
-    ['explora_aprobadas','explora_overrides','explora_historial','explora_pendientes',
-     'explora_mods','explora_catac','explora_catac_ver','explora_coef'].forEach(k=>localStorage.removeItem(k));
-    // Historial fundacional: ajuste CATAMP Feb+Mar 2026 sobre base Mar 2026
-    const histInicial = T.map(t=>({
-      proveedor: t.proveedor,
-      destino: t.destino,
-      km: t.km,
-      categoria: t.categoria,
-      tarifaAnterior: t.tarifa_base,
-      tarifaNueva: t.tarifa_vigente,
-      variacion: 9.26,
-      just: 'Ajuste CATAMP Feb+Mar 2026 (×1.0226 × ×1.0685 = ×1.0926)',
-      ref: 'CATAMP',
-      fecha: '01/04/2026'
-    }));
-    localStorage.setItem('explora_historial', JSON.stringify(histInicial));
-    localStorage.setItem(LS_VER, VERSION);
-  }
-})();
-
-actualizarVersionCatac();
-updateProfileUI();
-render();
+// La carga de datos se hace desde Firestore tras el login.
+// onAuthStateChanged dispara initPortal() una vez autenticado.
+async function initPortal(){
+  await cargarDatosFirestore();
+  iniciarListenerMods();
+  actualizarVersionCatac();
+  updateProfileUI();
+  render();
+}
 
 </script>
-</body>
-</html>
+
+
+</body></html>
