@@ -715,41 +715,35 @@ const DOC_PENDIENTES = db.collection('portal').doc('pendientes');
 const DOC_HISTORIAL  = db.collection('portal').doc('historial');
 const DOC_CATAC      = db.collection('portal').doc('catac');
 const DOC_CONFIG     = db.collection('portal').doc('config');
+const DOC_RUTAS_NUEVAS = db.collection('portal').doc('rutas_nuevas');
 
 // Cache local para operaciones síncronas dentro de la sesión
-let _cache = { mods:{}, pendientes:[], historial:[], catac:null, catacVer:null, adminPw:null };
+let _cache = { mods:{}, pendientes:[], historial:[], catac:null, catacVer:null, adminPw:null, rutasNuevas:[] };
 let _cacheLoaded = false;
 
 // Carga inicial de todos los datos desde Firestore
 async function cargarDatosFirestore(){
   try {
-    const [mDoc, pDoc, hDoc, cDoc, cfDoc] = await Promise.all([
+    const [mDoc, pDoc, hDoc, cDoc, cfDoc, rnDoc] = await Promise.all([
       DOC_MODS.get(), DOC_PENDIENTES.get(), DOC_HISTORIAL.get(),
-      DOC_CATAC.get(), DOC_CONFIG.get()
+      DOC_CATAC.get(), DOC_CONFIG.get(), DOC_RUTAS_NUEVAS.get()
     ]);
-    // Leer mods — pueden ser simples (número) o rutas nuevas (objeto)
-    const todosLosMods = (mDoc.exists && mDoc.data().data) ? mDoc.data().data : {};
-    const rutasNuevas  = (mDoc.exists && mDoc.data().rutas_nuevas) ? mDoc.data().rutas_nuevas : {};
-    _cache.mods = {...todosLosMods, ...rutasNuevas};
+    _cache.mods       = (mDoc.exists  && mDoc.data().data)  ? mDoc.data().data  : {};
     _cache.pendientes = (pDoc.exists  && pDoc.data().data)  ? pDoc.data().data  : [];
     _cache.historial  = (hDoc.exists  && hDoc.data().data)  ? hDoc.data().data  : [];
     _cache.catac      = (cDoc.exists  && cDoc.data().datos) ? cDoc.data().datos : null;
     _cache.catacVer   = (cDoc.exists  && cDoc.data().ver)   ? cDoc.data().ver   : null;
     _cache.adminPw    = (cfDoc.exists && cfDoc.data().adminPw) ? cfDoc.data().adminPw : null;
+    _cache.rutasNuevas = (rnDoc.exists && rnDoc.data().lista) ? rnDoc.data().lista : [];
 
-    // Restaurar rutas nuevas (guardadas con clave "new_...") al array T
-    Object.keys(_cache.mods).forEach(key => {
-      if(String(key).startsWith('new_') && _cache.mods[key] && typeof _cache.mods[key] === 'object'){
-        const ruta = _cache.mods[key];
-        const existe = T.findIndex(t=>t.destino===ruta.destino&&t.proveedor===ruta.proveedor);
-        if(existe < 0){
-          T.push(ruta);
-          console.log('Ruta nueva restaurada:', ruta.proveedor, ruta.destino);
-        }
-      }
+    // Restaurar rutas nuevas al array T
+    _cache.rutasNuevas.forEach(ruta => {
+      const existe = T.findIndex(t=>t.destino===ruta.destino&&t.proveedor===ruta.proveedor);
+      if(existe < 0) T.push(ruta);
     });
 
     _cacheLoaded = true;
+    console.log('Firestore cargado OK. Rutas nuevas:', _cache.rutasNuevas.length);
   } catch(e) {
     console.error('Error cargando Firestore:', e);
     _cacheLoaded = true;
@@ -782,15 +776,8 @@ function getHistorial(){ return _cache.historial || []; }
 // Funciones asíncronas (escriben en Firestore y actualizan cache)
 async function saveMods(o){
   _cache.mods = o;
-  // Separar modificaciones simples (número) de rutas nuevas (objeto)
-  const modsSimples = {};
-  const rutasNuevas = {};
-  Object.keys(o).forEach(k => {
-    if(typeof o[k] === 'object' && o[k] !== null) rutasNuevas[k] = o[k];
-    else modsSimples[k] = o[k];
-  });
-  await DOC_MODS.set({data: modsSimples, rutas_nuevas: rutasNuevas});
-  console.log('saveMods OK — simples:', Object.keys(modsSimples).length, 'nuevas:', Object.keys(rutasNuevas).length);
+  await DOC_MODS.set({data: o});
+  console.log('saveMods OK:', Object.keys(o).length, 'modificaciones');
 }
 async function savePendientes(p){
   _cache.pendientes = p;
@@ -1022,10 +1009,8 @@ async function confirmarAprobacion(){
     mods[idx]=pendingApproval.tarifa_vigente;
     hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:anterior,tarifaNueva:pendingApproval.tarifa_vigente,variacion:parseFloat(((pendingApproval.tarifa_vigente/anterior-1)*100).toFixed(2)),just:'Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
   } else {
-    // Ruta nueva: guardar con clave única que incluye los datos completos
-    const claveNueva='new_'+Date.now();
-    // Guardar objeto completo de la ruta nueva en mods con prefijo "new_"
-    mods[claveNueva]={
+    // Ruta nueva: guardar en documento separado rutas_nuevas
+    const nuevaRuta = {
       proveedor:pendingApproval.proveedor,
       producto:pendingApproval.producto,
       destino:pendingApproval.destino,
@@ -1036,9 +1021,13 @@ async function confirmarAprobacion(){
       categoria:pendingApproval.categoria,
       esNueva:true
     };
+    const listaActual = _cache.rutasNuevas || [];
+    listaActual.push(nuevaRuta);
+    _cache.rutasNuevas = listaActual;
+    await DOC_RUTAS_NUEVAS.set({lista: listaActual});
     hist.unshift({proveedor:pendingApproval.proveedor,destino:pendingApproval.destino,km:pendingApproval.km,categoria:pendingApproval.categoria,tarifaAnterior:0,tarifaNueva:pendingApproval.tarifa_vigente,variacion:100,just:'Nueva ruta — Generador',ref:'Otro',fecha:new Date().toLocaleDateString('es-AR')});
     // Agregar al array T en memoria
-    T.push({...mods[claveNueva]});
+    T.push(nuevaRuta);
   }
   await saveMods(mods);
   await saveHistorial(hist);
